@@ -34,7 +34,7 @@
   <!-- Header loaded dynamically by App.loadComponents() -->
   <!-- END head -->
 
-  <section class="site-hero inner-page overlay" style="background-image: url(images/hero_4.jpg)"
+  <section class="site-hero inner-page overlay" style="background-image: url(images/hero/hero-4.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row site-hero-inner justify-content-center align-items-center">
@@ -49,11 +49,7 @@
       </div>
     </div>
 
-    <a class="mouse smoothscroll" href="#next">
-      <div class="mouse-icon">
-        <span class="mouse-wheel"></span>
-      </div>
-    </a>
+
   </section>
   <!-- END section -->
 
@@ -67,22 +63,27 @@
             <p class="section-description">Tem alguma dúvida ou questão especial? Preencha o formulário abaixo e
               responderemos o mais breve possível.</p>
 
-            <form action="#" method="post">
+            <form action="https://formsubmit.co/geral@casadecantoneiros.pt" method="POST">
+              <!-- Configurações FormSubmit -->
+              <input type="hidden" name="_subject" value="Novo Contacto - Casa de Cantoneiros">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Nome *</label>
-                  <input type="text" id="name" class="form-control" placeholder="O seu nome">
+                  <input type="text" id="name" name="Nome" class="form-control" placeholder="O seu nome" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="email">Email *</label>
-                  <input type="email" id="email" class="form-control" placeholder="o.seu@email.com">
+                  <input type="email" id="email" name="Email" class="form-control" placeholder="o.seu@email.com"
+                    required>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="subject">Assunto</label>
-                  <select id="subject" class="form-control">
+                  <select id="subject" name="Assunto" class="form-control">
                     <option>Informação Geral</option>
                     <option>Reservas</option>
                     <option>Eventos</option>
@@ -94,8 +95,8 @@
               <div class="row mb-4">
                 <div class="col-md-12 form-group">
                   <label for="message">Mensagem *</label>
-                  <textarea name="message" id="message" class="form-control" cols="30" rows="6"
-                    placeholder="Escreva a sua mensagem..."></textarea>
+                  <textarea name="Mensagem" id="message" class="form-control" cols="30" rows="6"
+                    placeholder="Escreva a sua mensagem..." required></textarea>
                 </div>
               </div>
               <div class="row">
@@ -195,7 +196,8 @@
   </section>
   <!-- END slider -->
 
-  <section class="section bg-image overlay" style="background-image: url('images/hero_4.jpg');" id="section-reserva">
+  <section class="section bg-image overlay" style="background-image: url('images/hero/hero-4.jpg');"
+    id="section-reserva">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">

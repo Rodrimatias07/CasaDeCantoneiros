@@ -243,7 +243,7 @@ textarea.form-control {
 }
 
 .site-navbar nav .menu {
-  font-family: "Playfair Display", times, serif;
+  font-family: "Roboto", arial, sans-serif;
 }
 
 @media (min-width: 992px) {
@@ -389,13 +389,13 @@ textarea.form-control {
 }
 
 .site-hero.inner-page {
-  height: 50vh;
-  min-height: 700px;
+  height: 40vh;
+  min-height: 400px;
 }
 
 .site-hero.inner-page.overlay:before {
-  height: 50vh;
-  min-height: 700px;
+  height: 40vh;
+  min-height: 400px;
 }
 
 .site-hero-inner {
@@ -431,8 +431,8 @@ textarea.form-control {
 }
 
 .inner-page .site-hero-inner {
-  height: 50vh;
-  min-height: 700px;
+  height: 40vh;
+  min-height: 400px;
 }
 
 .page-inside .site-hero-inner,
@@ -2214,13 +2214,10 @@ textarea.form-control {
 }
 
 .booking-bar {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   padding: 10px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .form-control-minimal {

@@ -58,6 +58,7 @@
       this.initStellar();
       this.initSmoothScroll();
       this.initDatePickers();
+      this.initBookingFastForm();
     },
 
     /**
@@ -242,6 +243,28 @@
       }
       if ($.fn.timepicker) {
         $('#m_time').timepicker();
+      }
+    },
+
+    /**
+     * Initialize Fast Booking Form Redirect (WhatsApp)
+     */
+    initBookingFastForm: function () {
+      const $form = $('#booking_fast_form');
+      if ($form.length) {
+        $form.on('submit', function (e) {
+          e.preventDefault();
+
+          const checkin = $('#checkin_date').val() || '[Sem data de Check-in]';
+          const checkout = $('#checkout_date').val() || '[Sem data de Check-out]';
+          const adults = $('#booking_adults').val() || '2 Adultos';
+          const children = $('#booking_children').val() || '0 Crianças';
+
+          const message = `Olá! Gostaria de fazer uma reserva de ${checkin} a ${checkout} para ${adults} e ${children}.`;
+          const whatsappUrl = `https://wa.me/351965507158?text=${encodeURIComponent(message)}`;
+
+          window.open(whatsappUrl, '_blank');
+        });
       }
     },
 

@@ -33,7 +33,7 @@
   <!-- Header loaded dynamically by App.loadComponents() -->
   <!-- END head -->
 
-  <section class="site-hero overlay" style="background-image: url(images/hero_4.jpg)"
+  <section class="site-hero overlay" style="background-image: url(images/hero/hero-4.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row site-hero-inner justify-content-center align-items-center">
@@ -44,7 +44,7 @@
 
           <!-- Floating Booking Bar -->
           <div class="booking-bar-wrapper" data-aos="fade-up" data-aos-delay="200">
-            <form action="#" class="booking-bar">
+            <form id="booking_fast_form" action="#" class="booking-bar">
               <div class="row no-gutters align-items-center">
                 <div class="col-md-3 border-right">
                   <div class="form-group mb-0 p-3">
@@ -63,7 +63,7 @@
                     <div class="col-6 border-right">
                       <div class="form-group mb-0 p-3">
                         <label class="text-white-50 small text-uppercase font-weight-bold">Hóspedes</label>
-                        <select class="form-control-minimal">
+                        <select id="booking_adults" class="form-control-minimal">
                           <option>1 Adulto</option>
                           <option>2 Adultos</option>
                           <option>3 Adultos</option>
@@ -74,7 +74,7 @@
                     <div class="col-6">
                       <div class="form-group mb-0 p-3">
                         <label class="text-white-50 small text-uppercase font-weight-bold">Crianças</label>
-                        <select class="form-control-minimal">
+                        <select id="booking_children" class="form-control-minimal">
                           <option>0</option>
                           <option>1</option>
                           <option>2</option>
@@ -108,10 +108,10 @@
         <div class="col-md-12 col-lg-6 mb-5" data-aos="fade-up">
           <div class="image-stack">
             <div class="image-stack__item image-stack__item--top">
-              <img src="images/img_1.jpg" alt="Casa de Cantoneiros" class="img-fluid rounded shadow">
+              <img src="images/quartos/quarto-principal.jpg" alt="Casa de Cantoneiros" class="img-fluid rounded shadow">
             </div>
             <div class="image-stack__item image-stack__item--bottom">
-              <img src="images/food-1.jpg" alt="Tradição" class="img-fluid rounded shadow">
+              <img src="images/restaurante/pequeno-almoco.jpg" alt="Tradição" class="img-fluid rounded shadow">
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="room-card">
             <div class="room-img">
-              <img src="images/img_1.jpg" alt="Quarto Principal" class="img-fluid">
+              <img src="images/quartos/quarto-principal.jpg" alt="Quarto Principal" class="img-fluid">
             </div>
             <div class="room-content p-4 text-center">
               <h3 class="mb-3">Quarto Principal</h3>
@@ -252,7 +252,7 @@
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="room-card">
             <div class="room-img">
-              <img src="images/img_3.jpg" alt="Cozinha Equipada" class="img-fluid">
+              <img src="images/quartos/cozinha-equipada.jpg" alt="Cozinha Equipada" class="img-fluid">
             </div>
             <div class="room-content p-4 text-center">
               <h3 class="mb-3">Cozinha Equipada</h3>
@@ -266,7 +266,7 @@
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="room-card">
             <div class="room-img">
-              <img src="images/img_2.jpg" alt="Casa de Banho" class="img-fluid">
+              <img src="images/quartos/casa-de-banho.jpg" alt="Casa de Banho" class="img-fluid">
             </div>
             <div class="room-content p-4 text-center">
               <h3 class="mb-3">Casa de Banho</h3>
@@ -292,33 +292,33 @@
       </div>
       <div class="row">
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/slider-1.jpg" data-fancybox="gallery" class="gallery-item">
-            <img src="images/slider-1.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
+          <a href="images/galeria/galeria-1.jpg" data-fancybox="gallery" class="gallery-item">
+            <img src="images/galeria/galeria-1.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
           </a>
         </div>
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <a href="images/slider-2.jpg" data-fancybox="gallery" class="gallery-item">
-            <img src="images/slider-2.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
+          <a href="images/galeria/galeria-2.jpg" data-fancybox="gallery" class="gallery-item">
+            <img src="images/galeria/galeria-2.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
           </a>
         </div>
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-          <a href="images/slider-3.jpg" data-fancybox="gallery" class="gallery-item">
-            <img src="images/slider-3.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
+          <a href="images/galeria/galeria-3.jpg" data-fancybox="gallery" class="gallery-item">
+            <img src="images/galeria/galeria-3.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
           </a>
         </div>
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-          <a href="images/slider-4.jpg" data-fancybox="gallery" class="gallery-item">
-            <img src="images/slider-4.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
+          <a href="images/galeria/galeria-4.jpg" data-fancybox="gallery" class="gallery-item">
+            <img src="images/galeria/galeria-4.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
           </a>
         </div>
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/slider-5.jpg" data-fancybox="gallery" class="gallery-item">
-            <img src="images/slider-5.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
+          <a href="images/galeria/galeria-5.jpg" data-fancybox="gallery" class="gallery-item">
+            <img src="images/galeria/galeria-5.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
           </a>
         </div>
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <a href="images/slider-6.jpg" data-fancybox="gallery" class="gallery-item">
-            <img src="images/slider-6.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
+          <a href="images/galeria/galeria-6.jpg" data-fancybox="gallery" class="gallery-item">
+            <img src="images/galeria/galeria-6.jpg" alt="Galeria" class="img-fluid rounded shadow-sm">
           </a>
         </div>
       </div>
@@ -351,7 +351,7 @@
             <p class="testimonial-content mb-4">"Uma experiência verdadeiramente mágica. A casa é lindíssima, cheia de
               charme e história. O silêncio e a paz que aqui se respira são incomparáveis. Voltaremos certamente!"</p>
             <div class="testimonial-author d-flex align-items-center">
-              <img src="images/person_1.jpg" alt="Maria Silva" class="author-img mr-3">
+              <img src="images/sobre/testemunho-1.jpg" alt="Maria Silva" class="author-img mr-3">
               <div>
                 <h4 class="h6 mb-0">Maria Silva</h4>
                 <div class="star-rating">
@@ -374,7 +374,7 @@
             <p class="testimonial-content mb-4">"Perfeito para uma escapadinha a dois. A atenção aos detalhes é notável,
               desde a decoração até aos pequenos-almoços deliciosos. Sentimo-nos em casa desde o primeiro minuto."</p>
             <div class="testimonial-author d-flex align-items-center">
-              <img src="images/person_2.jpg" alt="João Santos" class="author-img mr-3">
+              <img src="images/sobre/testemunho-2.jpg" alt="João Santos" class="author-img mr-3">
               <div>
                 <h4 class="h6 mb-0">João Santos</h4>
                 <div class="star-rating">
@@ -397,7 +397,7 @@
             <p class="testimonial-content mb-4">"Levamos os nossos cães e foi fantástico! O jardim é enorme e seguro, e
               a localização é perfeita para caminhadas na natureza. Recomento a todos os amantes de animais."</p>
             <div class="testimonial-author d-flex align-items-center">
-              <img src="images/person_3.jpg" alt="Ana Costa" class="author-img mr-3">
+              <img src="images/sobre/testemunho-3.jpg" alt="Ana Costa" class="author-img mr-3">
               <div>
                 <h4 class="h6 mb-0">Ana Costa</h4>
                 <div class="star-rating">
@@ -416,7 +416,8 @@
   </section>
   <!-- END section -->
 
-  <section class="section bg-image overlay" style="background-image: url('images/hero_4.jpg');" id="section-reserva">
+  <section class="section bg-image overlay" style="background-image: url('images/hero/hero-4.jpg');"
+    id="section-reserva">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
