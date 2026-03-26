@@ -432,65 +432,26 @@ textarea.form-control {
 @media (max-width: 767.98px) {
   .booking-bar {
     background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px !important;
-    padding: 15px !important;
-  }
-
-  .booking-bar .form-group {
-    text-align: left !important;
-    padding: 10px 15px !important;
+    padding: 20px;
   }
 
   .booking-bar .border-right {
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Check Out column doesn't need right border but needs bottom box on mobile */
-  .booking-bar .border-right-md {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-
-  /* Guest container border */
-  .booking-bar .col-12.col-md-4 {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-
-  /* Inner row borders */
-  .booking-bar .row.no-gutters .col-6.border-right {
-    border-bottom: none !important;
-    /* No bottom border inside the guest row */
-  }
-
-  .booking-bar label {
-    font-size: 8px !important;
-    margin-bottom: 4px !important;
-    opacity: 0.8;
-  }
-
-  .booking-bar .form-control-minimal {
-    font-size: 14px !important;
+  .booking-bar .form-group {
+    padding: 15px 0 !important;
   }
 
   .booking-bar .btn-gold {
-    margin-top: 20px;
-    padding: 15px !important;
-    border-radius: 50px;
-    font-size: 14px;
-    text-transform: uppercase;
+    margin-top: 15px;
+    border-radius: 12px;
   }
 }
-
-/* Base border-right-md for desktop (reset) */
-@media (min-width: 768px) {
-  .border-right-md {
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-}
-
-
 
 
 .site-hero-inner .sub-heading {
@@ -2303,54 +2264,20 @@ textarea.form-control {
 }
 
 .booking-bar {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
-  padding: 10px;
-}
-
-.booking-bar .form-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-  text-align: left !important;
-  height: 100%;
-}
-
-.booking-bar .form-group:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.booking-bar label {
-  color: #c5a059 !important;
-  font-size: 10px !important;
-  font-weight: 800 !important;
-  letter-spacing: 2px !important;
-  margin-bottom: 6px !important;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-
-.booking-bar .border-right {
-  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 10px;
 }
 
 .form-control-minimal {
   background: transparent !important;
   border: none !important;
   color: #fff !important;
-  font-weight: 700;
+  font-weight: 600;
   padding: 0 !important;
   height: auto !important;
   font-size: 16px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left !important;
 }
 
 .form-control-minimal:focus {
@@ -2361,10 +2288,9 @@ textarea.form-control {
 }
 
 .form-control-minimal option {
-  background: #1a202c;
+  background: #141424;
   color: #fff;
 }
-
 
 /* Image Stack (Welcome Section) */
 .image-stack {
