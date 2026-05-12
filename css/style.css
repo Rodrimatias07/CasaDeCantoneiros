@@ -2176,7 +2176,32 @@ textarea.form-control {
   transform: scale(1);
 }
 
+@media (max-width: 991.98px) {
+  .gallery-filters {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 8px 18px;
+    font-size: 13px;
+    min-width: 110px;
+  }
+}
+
 @media (max-width: 767.98px) {
+  .gallery-filters {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .filter-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
   .gallery-item img {
     height: 220px;
   }

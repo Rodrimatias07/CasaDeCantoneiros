@@ -64,145 +64,21 @@
 
       <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
         <div class="col-md-12 text-center">
-          <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="interior">Interior</button>
-            <button class="filter-btn" data-filter="exterior">Exterior</button>
-            <button class="filter-btn" data-filter="envolvente">Envolvente</button>
-          </div>
+          <div class="gallery-filters" id="gallery-filters"></div>
         </div>
       </div>
 
-      <div class="row gallery-grid">
-        <!-- Interior -->
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item interior" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/galeria/interior/quarto.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/interior/quarto.jpg" alt="Quarto Principal" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item interior" data-aos="fade-up" data-aos-delay="200">
-          <a href="images/galeria/interior/casa-de-banho-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/interior/casa-de-banho-1.jpg" alt="Casa de Banho 1" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item interior" data-aos="fade-up" data-aos-delay="300">
-          <a href="images/galeria/interior/casa-de-banho-2.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/interior/casa-de-banho-2.jpg" alt="Casa de Banho 2" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item interior" data-aos="fade-up" data-aos-delay="400">
-          <a href="images/galeria/interior/sala-cozinha-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/interior/sala-cozinha-1.jpg" alt="Sala e Cozinha" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item interior" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/galeria/interior/sala-cozinha-2.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/interior/sala-cozinha-2.jpg" alt="Sala e Cozinha Detalhe" class="img-fluid">
-          </a>
-        </div>
-
-        <!-- Exterior -->
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item exterior" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/galeria/exterior/rio-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/exterior/rio-1.jpg" alt="Vista para o Rio" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item exterior" data-aos="fade-up" data-aos-delay="200">
-          <a href="images/galeria/exterior/churrasqueira-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/exterior/churrasqueira-1.jpg" alt="Churrasqueira" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item exterior" data-aos="fade-up" data-aos-delay="300">
-          <a href="images/galeria/exterior/jardim-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/exterior/jardim-1.jpg" alt="Jardim" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item exterior" data-aos="fade-up" data-aos-delay="400">
-          <a href="images/galeria/exterior/area-conversas-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/exterior/area-conversas-1.jpg" alt="Área de Conversas" class="img-fluid">
-          </a>
-        </div>
-
-        <!-- Envolvente -->
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item envolvente" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/galeria/envolvente/detalhe-1.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/envolvente/detalhe-1.jpg" alt="Detalhe Envolvente 1" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item envolvente" data-aos="fade-up" data-aos-delay="200">
-          <a href="images/galeria/envolvente/detalhe-2.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/envolvente/detalhe-2.jpg" alt="Detalhe Envolvente 2" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item envolvente" data-aos="fade-up" data-aos-delay="300">
-          <a href="images/galeria/envolvente/detalhe-3.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/envolvente/detalhe-3.jpg" alt="Detalhe Envolvente 3" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item envolvente" data-aos="fade-up" data-aos-delay="400">
-          <a href="images/galeria/envolvente/detalhe-4.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/envolvente/detalhe-4.jpg" alt="Detalhe Envolvente 4" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item envolvente" data-aos="fade-up" data-aos-delay="100">
-          <a href="images/galeria/envolvente/detalhe-5.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/envolvente/detalhe-5.jpg" alt="Detalhe Envolvente 5" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item envolvente" data-aos="fade-up" data-aos-delay="200">
-          <a href="images/galeria/envolvente/detalhe-6.jpg" class="gallery-item" data-fancybox="gallery">
-            <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-            <img src="images/galeria/envolvente/detalhe-6.jpg" alt="Detalhe Envolvente 6" class="img-fluid">
-          </a>
-        </div>
-      </div>
+      <div class="row gallery-grid" id="gallery-grid"></div>
     </div>
   </section>
 
+  <script src="js/gallery-data.js"></script>
+  <script src="js/gallery-builder.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const filterItems = document.querySelectorAll('.filter-item');
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // Update active button
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const filterValue = btn.getAttribute('data-filter');
-
-          filterItems.forEach(item => {
-            if (filterValue === 'all' || item.classList.contains(filterValue)) {
-              item.style.display = 'block';
-              setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'scale(1)';
-              }, 10);
-            } else {
-              item.style.opacity = '0';
-              item.style.transform = 'scale(0.8)';
-              setTimeout(() => {
-                item.style.display = 'none';
-              }, 300);
-            }
-          });
-        });
-      });
+      if (typeof GalleryBuilder !== 'undefined') {
+        GalleryBuilder.init('#gallery-grid', '#gallery-filters');
+      }
     });
   </script>
 
