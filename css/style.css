@@ -2251,53 +2251,110 @@ textarea.form-control {
 
 /* Floating Booking Bar */
 .booking-bar-wrapper {
-  max-width: 1000px;
+  max-width: 820px;
   margin: 0 auto;
   position: relative;
   z-index: 10;
+  padding: 8px 0 0;
+}
+
+.booking-bar-intro span {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 1.5px;
+  font-size: 11px;
 }
 
 .booking-bar {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(12, 16, 22, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  padding: 8px;
-  transition: all 0.4s ease;
+  border-radius: 28px;
+  box-shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.75);
+  padding: 12px;
+  transition: all 0.35s ease;
 }
 
 .booking-bar .form-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  padding: 10px 20px !important;
+  transition: all 0.25s ease;
+  border-radius: 18px;
+  padding: 12px 16px !important;
   cursor: pointer;
+  min-height: 80px;
 }
 
 .booking-bar .form-group:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .booking-bar label {
-  color: rgba(255, 255, 255, 0.6) !important;
-  font-size: 10px !important;
-  font-weight: 800 !important;
-  letter-spacing: 2px !important;
-  margin-bottom: 4px !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.4px !important;
+  margin-bottom: 6px !important;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
 }
 
 .booking-bar .form-group:hover label {
-  color: #c5a059 !important;
+  color: #ffcc78 !important;
 }
 
 .booking-bar .border-right {
-  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.booking-bar .btn-gold {
+  width: 100%;
+  max-width: 150px;
+  padding: 10px 0 !important;
+  background: linear-gradient(135deg, #f7c15a 0%, #d29d34 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
+  transition: none !important;
+}
+
+.booking-bar .btn-gold:hover {
+  transform: none !important;
+  background: linear-gradient(135deg, #f7c15a 0%, #d29d34 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16) !important;
+}
+
+.booking-bar .form-control-minimal {
+  background: transparent !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 0 !important;
+  height: auto !important;
+  font-size: 15px;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+}
+
+.booking-bar .form-control-minimal:focus {
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.booking-bar .form-control-minimal option {
+  background: #141424;
+  color: #fff;
 }
 
 .form-control-minimal {
