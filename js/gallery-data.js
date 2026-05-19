@@ -71,6 +71,41 @@ window.galleryData = [
   },
   {
     "category": "interior",
+    "src": "images/galeria/interior/IMG_3421.jpeg",
+    "alt": "Img 3421"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/IMG_3422.jpeg",
+    "alt": "Img 3422"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/IMG_3425.jpeg",
+    "alt": "Img 3425"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/IMG_3431.jpeg",
+    "alt": "Img 3431"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/IMG_3434.jpeg",
+    "alt": "Img 3434"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/IMG_3436.jpeg",
+    "alt": "Img 3436"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/IMG_3437.jpeg",
+    "alt": "Img 3437"
+  },
+  {
+    "category": "interior",
     "src": "images/galeria/interior/quarto.jpg",
     "alt": "Quarto"
   },
