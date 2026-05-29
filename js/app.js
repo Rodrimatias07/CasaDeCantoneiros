@@ -58,6 +58,8 @@
       this.initStellar();
       this.initSmoothScroll();
       this.initDatePickers();
+      this.initGuestPickers();
+      this.initReservationPrefill();
       this.initBookingFastForm();
       this.initFormSubmitAJAX();
     },
@@ -246,7 +248,97 @@
     },
 
     /**
-     * Initialize Fast Booking Form Redirect (WhatsApp)
+     * Premium guest quantity pickers synced with the hidden select fields.
+     */
+    initGuestPickers: function () {
+      $('.guest-picker').each(function () {
+        const $picker = $(this);
+        const $select = $('#' + $picker.data('target'));
+        const $toggle = $picker.find('.guest-picker-toggle');
+        const $value = $picker.find('.guest-picker-value');
+
+        if (!$select.length) return;
+
+        $value.text($select.val());
+        $picker.toggleClass('is-empty', $select.val() === '0');
+        $picker.find('.guest-picker-menu button').removeClass('selected');
+        $picker.find(`.guest-picker-menu button[data-value="${$select.val()}"]`).addClass('selected');
+
+        $toggle.off('click').on('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          $('.guest-picker').not($picker).removeClass('open').find('.guest-picker-toggle').attr('aria-expanded', 'false');
+          $picker.toggleClass('open');
+          $toggle.attr('aria-expanded', $picker.hasClass('open') ? 'true' : 'false');
+        });
+
+        $picker.find('.guest-picker-menu button').off('click').on('click', function (e) {
+          e.preventDefault();
+          const selectedValue = $(this).data('value').toString();
+          $select.val(selectedValue).trigger('change');
+          $value.text(selectedValue);
+          $picker.toggleClass('is-empty', selectedValue === '0');
+          $picker.find('.guest-picker-menu button').removeClass('selected');
+          $(this).addClass('selected');
+          $picker.removeClass('open');
+          $toggle.attr('aria-expanded', 'false');
+        });
+      });
+
+      $(document).off('click.guestPickers').on('click.guestPickers', function () {
+        $('.guest-picker').removeClass('open').find('.guest-picker-toggle').attr('aria-expanded', 'false');
+      });
+    },
+
+    /**
+     * Prefill the full reservation form from the quick booking bar.
+     */
+    initReservationPrefill: function () {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.toString()) return;
+
+      const parseBookingDate = function (value) {
+        if (!value) return '';
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+
+        const cleaned = value.replace(',', '').trim().toLowerCase();
+        const parts = cleaned.split(/\s+/);
+        if (parts.length < 3) return '';
+
+        const months = {
+          january: '01', fevereiro: '02', february: '02', marco: '03', março: '03', march: '03',
+          abril: '04', april: '04', maio: '05', may: '05', junho: '06', june: '06',
+          julho: '07', july: '07', agosto: '08', august: '08', setembro: '09', september: '09',
+          outubro: '10', october: '10', novembro: '11', november: '11', dezembro: '12', december: '12'
+        };
+
+        const day = parts[0].padStart(2, '0');
+        const month = months[parts[1]];
+        const year = parts[2];
+
+        return month && year ? `${year}-${month}-${day}` : '';
+      };
+
+      const setSelectByPrefix = function ($select, value) {
+        if (!$select.length || value === null) return;
+        const normalized = value.toString().replace('+', '');
+        const $option = $select.find('option').filter(function () {
+          return $(this).text().trim().indexOf(normalized) === 0 || $(this).val() === normalized;
+        }).first();
+
+        if ($option.length) {
+          $select.val($option.val());
+        }
+      };
+
+      $('#checkin_date').val(parseBookingDate(params.get('checkin')));
+      $('#checkout_date').val(parseBookingDate(params.get('checkout')));
+      setSelectByPrefix($('#adults'), params.get('adults'));
+      setSelectByPrefix($('#children'), params.get('children'));
+    },
+
+    /**
+     * Initialize Fast Booking Form Redirect
      */
     initBookingFastForm: function () {
       const $form = $('#booking_fast_form');
@@ -256,13 +348,24 @@
 
           const checkin = $('#checkin_date').val() || '[Sem data de Check-in]';
           const checkout = $('#checkout_date').val() || '[Sem data de Check-out]';
-          const adults = $('#booking_adults').val() || '2 Adultos';
-          const children = $('#booking_children').val() || '0 Crianças';
+          const adults = $('#booking_adults').val() || '0';
+          const children = $('#booking_children').val() || '0';
 
-          const message = `Olá! Gostaria de fazer uma reserva de ${checkin} a ${checkout} para ${adults} e ${children}.`;
-          const whatsappUrl = `https://wa.me/351965507158?text=${encodeURIComponent(message)}`;
+          // WhatsApp direct flow kept as fallback if the client wants it again later.
+          // const adultsText = adults === '1' ? '1 adulto' : `${adults} adultos`;
+          // const childrenText = children === '1' ? '1 criança' : `${children} crianças`;
+          // const message = `Olá! Gostaria de fazer uma reserva de ${checkin} a ${checkout} para ${adultsText} e ${childrenText}.`;
+          // const whatsappUrl = `https://wa.me/351965507158?text=${encodeURIComponent(message)}`;
+          // window.open(whatsappUrl, '_blank');
 
-          window.open(whatsappUrl, '_blank');
+          const params = new URLSearchParams({
+            checkin: checkin,
+            checkout: checkout,
+            adults: adults,
+            children: children
+          });
+
+          window.location.href = `reservas.html?${params.toString()}#next`;
         });
       }
     },

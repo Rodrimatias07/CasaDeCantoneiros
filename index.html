@@ -49,46 +49,49 @@
               <span class="text-white-50 text-uppercase font-weight-bold" style="letter-spacing: 2px; font-size: 13px;">Reserve a sua estadia em poucos passos</span>
             </div>
             <form id="booking_fast_form" action="#" class="booking-bar">
-              <div class="row no-gutters align-items-center">
-                <div class="col-md-3 border-right">
-                  <div class="form-group mb-0 p-3">
+              <div class="row no-gutters align-items-stretch">
+                <!-- Check In -->
+                <div class="col-12 col-sm-6 col-md-3 booking-field">
+                  <div class="form-group mb-0 p-3 h-100 d-flex flex-column justify-content-center">
                     <label class="text-white-50 small text-uppercase font-weight-bold">Check In</label>
                     <input type="text" id="checkin_date" class="form-control-minimal" placeholder="Selecione data">
                   </div>
                 </div>
-                <div class="col-md-3 border-right">
-                  <div class="form-group mb-0 p-3">
+                <!-- Check Out -->
+                <div class="col-12 col-sm-6 col-md-3 booking-field">
+                  <div class="form-group mb-0 p-3 h-100 d-flex flex-column justify-content-center">
                     <label class="text-white-50 small text-uppercase font-weight-bold">Check Out</label>
                     <input type="text" id="checkout_date" class="form-control-minimal" placeholder="Selecione data">
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="row no-gutters">
-                    <div class="col-6 border-right">
-                      <div class="form-group mb-0 p-3">
-                        <label class="text-white-50 small text-uppercase font-weight-bold">Hóspedes</label>
-                        <select id="booking_adults" class="form-control-minimal">
-                          <option>1 Adulto</option>
-                          <option>2 Adultos</option>
-                          <option>3 Adultos</option>
-                          <option>4+ Adultos</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-group mb-0 p-3">
-                        <label class="text-white-50 small text-uppercase font-weight-bold">Crianças</label>
-                        <select id="booking_children" class="form-control-minimal">
-                          <option>0</option>
-                          <option>1</option>
-                          <option>2</option>
-                        </select>
-                      </div>
-                    </div>
+                <!-- Adultos -->
+                <div class="col-6 col-sm-6 col-md-2 booking-field">
+                  <div class="form-group mb-0 p-3 h-100 d-flex flex-column justify-content-center">
+                    <label class="text-white-50 small text-uppercase font-weight-bold">Adultos</label>
+                    <select id="booking_adults" class="form-control-minimal">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
                   </div>
                 </div>
-                <div class="col-md-2 d-flex align-items-center justify-content-center px-1">
-                  <button class="btn btn-gold text-uppercase">RESERVE AGORA</button>
+                <!-- Crianças -->
+                <div class="col-6 col-sm-6 col-md-2 booking-field">
+                  <div class="form-group mb-0 p-3 h-100 d-flex flex-column justify-content-center">
+                    <label class="text-white-50 small text-uppercase font-weight-bold">Crianças</label>
+                    <select id="booking_children" class="form-control-minimal">
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Button -->
+                <div class="col-12 col-md-2 booking-field d-flex align-items-center justify-content-center">
+                  <button class="btn btn-gold text-uppercase w-100">RESERVE AGORA</button>
                 </div>
               </div>
             </form>
