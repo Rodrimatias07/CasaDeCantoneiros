@@ -86,16 +86,21 @@
      */
     initMenuToggle: function () {
       // Unbind first to prevent multiple events if re-initialized
-      $('.js-site-menu-toggle').off('click');
+      $('.js-site-menu-toggle').off('click keydown');
 
-      $('.js-site-menu-toggle').click(function (e) {
+      $('.js-site-menu-toggle').on('click keydown', function (e) {
+        if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
+          return;
+        }
         e.preventDefault();
         const $this = $(this);
         if ($('body').hasClass('menu-open')) {
           $this.removeClass('open');
+          $this.attr('aria-expanded', 'false');
           $('body').removeClass('menu-open');
         } else {
           $this.addClass('open');
+          $this.attr('aria-expanded', 'true');
           $('body').addClass('menu-open');
         }
       });
