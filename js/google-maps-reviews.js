@@ -63,7 +63,7 @@
     }
 
     return '' +
-      '<div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">' +
+      '<div class="col-6 col-lg-4 mb-4" data-aos="fade-up">' +
       '  <div class="testimonial-card">' +
       '    <div class="quote-icon mb-3"><span class="fa fa-quote-left text-gold"></span></div>' +
       '    <p class="testimonial-content mb-4">"' + escapeHtml(review.text) + '"</p>' +
