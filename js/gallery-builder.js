@@ -14,10 +14,10 @@
     const imgSrc = item.thumb || item.src || '';
     const srcset = item.srcset ? ` srcset="${item.srcset}"` : '';
     return `
-      <div class="col-lg-3 col-md-4 col-sm-6 mb-4 filter-item ${item.category}">
+      <div class="col-6 col-md-4 col-lg-3 mb-4 filter-item ${item.category}">
         <a href="${item.src}" class="gallery-item" data-fancybox="gallery">
           <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-          <img src="${imgSrc}"${srcset} sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw" loading="lazy" alt="${item.alt}" class="img-fluid">
+          <img src="${imgSrc}"${srcset} sizes="(max-width: 575px) 50vw, (max-width: 991px) 50vw, (max-width: 1199px) 33vw, 25vw" loading="lazy" alt="${item.alt}" class="img-fluid">
         </a>
       </div>`;
   }

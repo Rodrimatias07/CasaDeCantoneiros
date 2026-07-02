@@ -572,6 +572,17 @@ iframe {
   padding: 30px 18px;
 }
 
+.philosophy-grid {
+  display: grid !important;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 46px;
+}
+
+.philosophy-card {
+  padding: 34px 18px;
+}
+
 .amenity-icon-box .fa {
   color: #fff !important;
   font-size: 25px;
@@ -865,6 +876,15 @@ textarea.form-control {
     display: none;
   }
 
+  .philosophy-grid {
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .philosophy-card {
+    padding: 28px 16px;
+  }
+
   .contact-form-container {
     margin-bottom: 38px;
     padding-right: 0;
@@ -960,8 +980,85 @@ textarea.form-control {
     display: none;
   }
 
+  .amenity-card,
+  .philosophy-card {
+    min-height: 0;
+    padding: 18px 10px;
+  }
+
+  .amenity-icon-box,
+  .philosophy-card .icon-circle {
+    height: 48px;
+    margin-bottom: 14px !important;
+    width: 48px;
+  }
+
+  .amenity-icon-box .fa,
+  .philosophy-card .icon-circle i {
+    font-size: 20px;
+  }
+
+  .amenity-card h3,
+  .philosophy-card h3 {
+    font-size: 16px !important;
+    line-height: 1.18;
+    margin-bottom: 10px !important;
+  }
+
+  .amenity-card p,
+  .philosophy-card p {
+    font-size: 12px !important;
+    line-height: 1.45;
+    margin-bottom: 0;
+  }
+
+  .room-card {
+    height: 100%;
+  }
+
+  .room-img img,
+  .gallery-item img {
+    aspect-ratio: 1 / 1;
+  }
+
   .room-content {
-    padding: 22px 18px !important;
+    padding: 16px 10px !important;
+  }
+
+  .room-content h3 {
+    font-size: 16px !important;
+    line-height: 1.18;
+    margin-bottom: 8px !important;
+  }
+
+  .room-content p {
+    font-size: 12px !important;
+    line-height: 1.35;
+    margin-bottom: 12px !important;
+  }
+
+  .room-content .btn {
+    font-size: 11px;
+    min-height: 38px;
+    padding: 10px 8px !important;
+    width: 100%;
+  }
+
+  .gallery-grid,
+  .amenities-grid,
+  .rooms-grid,
+  .gallery-preview-grid {
+    margin-left: -6px;
+    margin-right: -6px;
+  }
+
+  .gallery-grid > .filter-item,
+  .amenities-grid > [class*="col-"],
+  .rooms-grid > [class*="col-"],
+  .gallery-preview-grid > [class*="col-"] {
+    margin-bottom: 12px !important;
+    padding-left: 6px;
+    padding-right: 6px;
   }
 
   .timeline-line {
