@@ -441,14 +441,18 @@
      * Handle sticky header behavior on scroll
      */
     initStickyHeader: function () {
-      $(window).scroll(function () {
+      const updateHeaderState = function () {
         const $win = $(window);
-        if ($win.scrollTop() > 200) {
+        if ($win.scrollTop() > 8) {
           $('.js-site-header').addClass('scrolled');
         } else {
           $('.js-site-header').removeClass('scrolled');
         }
-      });
+      };
+
+      $(window).off('scroll.stickyHeader resize.stickyHeader');
+      $(window).on('scroll.stickyHeader resize.stickyHeader', updateHeaderState);
+      updateHeaderState();
     },
 
     /**
