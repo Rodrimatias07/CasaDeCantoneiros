@@ -67,20 +67,16 @@
             <p class="section-description">Preencha o formulário abaixo e entraremos em contacto consigo dentro de 24
               horas para confirmar a disponibilidade e os detalhes da sua estadia.</p>
 
-            <form action="https://formspree.io/f/xwvnggya" method="POST">
-              <!-- Configurações FormSubmit -->
-              <input type="hidden" name="_subject" value="Novo Pedido de Reserva - Casa de Cantoneiros">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
+            <form action="enviar_reserva.php" method="POST">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Nome Completo *</label>
-                  <input type="text" id="name" name="Nome Completo" class="form-control" placeholder="O seu nome"
+                  <input type="text" id="name" name="nome_completo" class="form-control" placeholder="O seu nome"
                     required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="phone">Telemóvel *</label>
-                  <input type="text" id="phone" name="Telemovel" class="form-control" placeholder="(+351) 900 000 000"
+                  <input type="text" id="phone" name="telemovel" class="form-control" placeholder="(+351) 900 000 000"
                     required>
                 </div>
               </div>
@@ -88,7 +84,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="email">Email *</label>
-                  <input type="email" id="email" name="Email" class="form-control" placeholder="o.seu@email.com"
+                  <input type="email" id="email" name="email" class="form-control" placeholder="o.seu@email.com"
                     required>
                 </div>
               </div>
@@ -96,18 +92,18 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="checkin_date">Check-in *</label>
-                  <input type="date" id="checkin_date" name="Check-in" class="form-control" required>
+                  <input type="date" id="checkin_date" name="checkin" class="form-control" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="checkout_date">Check-out *</label>
-                  <input type="date" id="checkout_date" name="Check-out" class="form-control" required>
+                  <input type="date" id="checkout_date" name="checkout" class="form-control" required>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="adults">Número de Adultos</label>
-                  <select id="adults" name="Adultos" class="form-control">
+                  <select id="adults" name="adultos" class="form-control">
                     <option selected>0 Adultos</option>
                     <option>1 Adulto</option>
                     <option>2 Adultos</option>
@@ -117,7 +113,7 @@
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="children">Número de Crianças</label>
-                  <select id="children" name="Criancas" class="form-control">
+                  <select id="children" name="criancas" class="form-control">
                     <option selected>0 Crianças</option>
                     <option>1 Criança</option>
                     <option>2 Crianças</option>
@@ -128,7 +124,7 @@
               <div class="row mb-4">
                 <div class="col-md-12 form-group">
                   <label for="message">Notas ou Pedidos Especiais</label>
-                  <textarea name="Notas" id="message" class="form-control" cols="30" rows="5"
+                  <textarea name="notas" id="message" class="form-control" cols="30" rows="5"
                     placeholder="Alguma informação adicional que queira partilhar..."></textarea>
                 </div>
               </div>

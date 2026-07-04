@@ -61,7 +61,6 @@
       this.initGuestPickers();
       this.initReservationPrefill();
       this.initBookingFastForm();
-      this.initFormSubmitAJAX();
     },
 
     /**
@@ -373,68 +372,6 @@
           window.location.href = `reservas.html?${params.toString()}#next`;
         });
       }
-    },
-
-    /**
-     * Handle Formspree.io forms with AJAX to prevent redirect and show success message
-     */
-    initFormSubmitAJAX: function () {
-      $('form[action^="https://formspree.io"]').on('submit', function (e) {
-        e.preventDefault();
-        const $form = $(this);
-        let actionUrl = $form.attr('action');
-
-        const $btn = $form.find('button[type="submit"]');
-        const originalBtnHtml = $btn.html();
-
-        $btn.html('<i class="fa fa-spinner fa-spin"></i> A ENVIAR...').prop('disabled', true);
-
-        // Convert form data to object for JSON payload
-        const formData = new FormData($form[0]);
-        const dataObj = {};
-        formData.forEach((value, key) => dataObj[key] = value);
-
-        fetch(actionUrl, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(dataObj)
-        })
-          .then(response => {
-            if (!response.ok) {
-              return response.json().then(data => { throw new Error(data.error || "Erro ao enviar") });
-            }
-            return response.json();
-          })
-          .then(data => {
-            $btn.html('<i class="fa fa-check"></i> ENVIADO COM SUCESSO').css('background-color', '#28a745').css('color', '#fff').css('border-color', '#28a745');
-            $form[0].reset();
-
-            // Show success message
-            if ($form.find('.form-message').length === 0) {
-              $form.prepend('<div class="alert alert-success form-message" style="background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #c3e6cb; font-size: 15px;"><strong>Enviado com sucesso!</strong> A sua mensagem foi enviada. Entraremos em contacto brevemente.</div>');
-            }
-
-            setTimeout(() => {
-              $btn.html(originalBtnHtml).prop('disabled', false).css('background-color', '').css('color', '').css('border-color', '');
-              $form.find('.form-message').fadeOut(function () { $(this).remove(); });
-            }, 8000);
-          })
-          .catch(error => {
-            $btn.html('<i class="fa fa-exclamation-triangle"></i> ERRO AO ENVIAR').css('background-color', '#dc3545').css('color', '#fff').css('border-color', '#dc3545');
-
-            if ($form.find('.form-message').length === 0) {
-              $form.prepend('<div class="alert alert-danger form-message" style="background-color: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #f5c6cb; font-size: 15px;">Ocorreu um erro ao enviar a sua mensagem. Por favor, tente novamente diretamente para o nosso email ou telefone.</div>');
-            }
-
-            setTimeout(() => {
-              $btn.html(originalBtnHtml).prop('disabled', false).css('background-color', '').css('color', '').css('border-color', '');
-              $form.find('.form-message').fadeOut(function () { $(this).remove(); });
-            }, 6000);
-          });
-      });
     },
 
     /**
