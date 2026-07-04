@@ -387,85 +387,6 @@
   <script src="js/parallax.js"></script>
   <script src="js/popup.js"></script>
 
-  <script>
-    window.initGoogleReviews = function () {
-      var placeId = 'ChIJE4uxIwAnJQ0REkenON0orFs';
-      var container = document.getElementById('google-reviews-container');
-
-      if (!container) {
-        return;
-      }
-
-      function escapeHtml(value) {
-        return String(value || '')
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
-      }
-
-      function renderStars() {
-        var output = '';
-
-        for (var i = 0; i < 5; i += 1) {
-          output += '<span style="color:#cda250;font-size:18px;line-height:1;">&#9733;</span>';
-        }
-
-        return output;
-      }
-
-      function renderReviewCard(review, index) {
-        var author = escapeHtml(review.author_name || '');
-        var text = escapeHtml(review.text || '');
-        var delay = index > 0 ? ' data-aos-delay="' + Math.min(index * 100, 400) + '"' : '';
-
-        return '' +
-          '<div class="col-6 col-lg-4 mb-4" data-aos="fade-up"' + delay + '>' +
-          '  <article class="testimonial-card" style="height:100%;min-height:275px;background:#fff;border-radius:8px;padding:32px 26px;box-shadow:0 18px 45px rgba(24,35,27,0.10);border:1px solid rgba(24,35,27,0.08);">' +
-          '    <div class="quote-icon mb-3"><span class="fa fa-quote-left" style="color:#cda250;font-size:30px;"></span></div>' +
-          '    <p class="testimonial-content mb-4" style="min-height:96px;font-style:italic;color:#5f6b65;line-height:1.75;">"' + text + '"</p>' +
-          '    <div class="testimonial-author">' +
-          '      <h4 class="h6 mb-1" style="min-height:20px;color:#18231b;">' + author + '</h4>' +
-          '      <div class="star-rating mb-1">' + renderStars() + '</div>' +
-          '      <small class="text-muted">Avaliação recente</small>' +
-          '    </div>' +
-          '  </article>' +
-          '</div>';
-      }
-
-      function renderApiAlert(status) {
-        container.innerHTML = '<div style="color: #d9534f; background: #fdf7f7; border: 1px solid #d9534f; padding: 20px; text-align: center; font-weight: bold; font-family: sans-serif;">ALERTA DA API GOOGLE: O status retornado foi ' + escapeHtml(status) + '. Verifica a Google Cloud Console.</div>';
-      }
-
-      var service = new google.maps.places.PlacesService(document.createElement('div'));
-
-      service.getDetails({
-        placeId: placeId,
-        fields: ['reviews', 'name']
-      }, function (results, status) {
-        console.log('=== DIAGNÓSTICO GOOGLE MAPS ===');
-        console.log('Status recebido:', status);
-        console.log('Resultados recebidos:', results);
-
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          var reviews = results && Array.isArray(results.reviews) ? results.reviews : [];
-
-          if (!reviews.length) {
-            renderApiAlert('OK_SEM_REVIEWS');
-            return;
-          }
-
-          container.innerHTML = '<div class="row">' + reviews.slice(0, 5).map(renderReviewCard).join('') + '</div>';
-          return;
-        }
-
-        renderApiAlert(status);
-      });
-    };
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_GOOGLE_REMOVIDA&libraries=places&callback=initGoogleReviews" async defer></script>
-
   <script src="js/animacoes.js"></script>
 
   <script src="js/calendario.js"></script>
@@ -474,6 +395,49 @@
 
 
   <script src="js/app.js"></script>
+  <script>
+    function initGoogleReviews() {
+      const container = document.getElementById('google-reviews-container');
+      if (!container) return;
+
+      container.innerHTML = '';
+
+      try {
+        const service = new google.maps.places.PlacesService(container);
+        const request = {
+          placeId: 'ChIJE4uxIwAnJQ0REkenON0orFs',
+          fields: ['reviews', 'name', 'rating']
+        };
+
+        service.getDetails(request, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK && place && place.reviews) {
+            const reaisReviews = place.reviews.slice(0, 3);
+
+            reaisReviews.forEach(function (review) {
+              const rating = Math.max(0, Math.min(5, Math.round(Number(review.rating) || 0)));
+              const estrelas = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+              const cardHTML = `
+                <div class="review-card" style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin: 15px; flex: 1; min-width: 280px;">
+                  <span style="color: #cda250; font-size: 32px; font-weight: bold; line-height: 1; display: block; margin-bottom: -10px;">“</span>
+                  <p style="font-style: italic; color: #555; min-height: 60px;">"${review.text || ''}"</p>
+                  <h4 style="margin: 15px 0 5px 0; color: #2c3e50; font-weight: bold;">${review.author_name || ''}</h4>
+                  <div style="color: #cda250; margin-bottom: 5px;">${estrelas}</div>
+                  <span style="font-size: 12px; color: #999;">Avaliação do Google</span>
+                </div>
+              `;
+              container.innerHTML += cardHTML;
+            });
+          } else {
+            console.log("Aviso: API do Google não carregou. Status:", status);
+          }
+        });
+      } catch (error) {
+        console.error("Erro ao iniciar PlacesService:", error);
+      }
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_GOOGLE_REMOVIDA&libraries=places&callback=initGoogleReviews" async defer></script>
 </body>
 
 </html>
