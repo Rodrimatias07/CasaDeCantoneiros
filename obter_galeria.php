@@ -1,40 +1,41 @@
 <?php
 declare(strict_types=1);
 
-header('Content-Type: application/json; charset=UTF-8');
+ob_start();
 
-$baseDir = __DIR__ . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'galeria';
-$baseUrl = 'images/galeria';
-$extensions = '*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}';
-$imagens = [];
+header('Content-Type: application/json');
 
-if (is_dir($baseDir)) {
-    $patterns = [
-        $baseDir . DIRECTORY_SEPARATOR . $extensions,
-        $baseDir . DIRECTORY_SEPARATOR . '*' . DIRECTORY_SEPARATOR . $extensions,
-    ];
+chdir(__DIR__);
 
-    foreach ($patterns as $pattern) {
-        $files = glob($pattern, GLOB_BRACE);
+$categorias = ['envolvente', 'exterior', 'interior'];
+$imagens_finais = [];
 
-        if (!is_array($files)) {
+foreach ($categorias as $cat) {
+    $ficheiros = glob('images/galeria/' . $cat . '/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE);
+
+    if (!is_array($ficheiros)) {
+        $ficheiros = [];
+    }
+
+    natcasesort($ficheiros);
+
+    foreach ($ficheiros as $ficheiro) {
+        if (!is_file($ficheiro)) {
             continue;
         }
 
-        foreach ($files as $file) {
-            if (!is_file($file)) {
-                continue;
-            }
+        $caminho_completo_da_imagem = str_replace('\\', '/', $ficheiro);
+        $nome_da_pasta_da_categoria = $cat;
 
-            $relative = str_replace($baseDir, $baseUrl, $file);
-            $relative = str_replace(DIRECTORY_SEPARATOR, '/', $relative);
-            $imagens[] = $relative;
-        }
+        array_push($imagens_finais, [
+            "url" => $caminho_completo_da_imagem,
+            "categoria" => $nome_da_pasta_da_categoria
+        ]);
     }
 }
 
-$imagens = array_values(array_unique($imagens));
-natcasesort($imagens);
-$imagens = array_values($imagens);
+$imagens_finais = array_values($imagens_finais);
 
-echo json_encode($imagens, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+ob_clean();
+
+echo json_encode($imagens_finais, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

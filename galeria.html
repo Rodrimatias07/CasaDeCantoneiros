@@ -69,17 +69,21 @@
 
       <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
         <div class="col-md-12 text-center">
-          <div class="gallery-filters" id="gallery-filters"></div>
+          <div class="gallery-filters" id="gallery-filters" aria-label="Filtros da galeria">
+            <button class="filter-btn active" type="button" data-filter="todos">TODOS</button>
+            <button class="filter-btn" type="button" data-filter="envolvente">ENVOLVENTE</button>
+            <button class="filter-btn" type="button" data-filter="exterior">EXTERIOR</button>
+            <button class="filter-btn" type="button" data-filter="interior">INTERIOR</button>
+          </div>
         </div>
       </div>
 
-      <div class="row gallery-grid" id="gallery-grid"></div>
+      <div class="row gallery-grid" id="galeria-grid"></div>
     </div>
   </section>
 
-  <script src="js/gallery-data.js"></script>
   <script src="js/gallery-builder.js"></script>
-  <script src="js/galeria-dinamica.js"></script>
+  <script src="js/galeria-dinamica.js?v=5"></script>
 
 
 

@@ -14,24 +14,12 @@
     const imgSrc = item.thumb || item.src || '';
     const srcset = item.srcset ? ` srcset="${item.srcset}"` : '';
     return `
-      <div class="col-6 col-md-4 col-lg-3 mb-4 filter-item ${item.category}">
+      <div class="col-6 col-md-4 col-lg-3 mb-4 filter-item ${item.category}" data-category="${item.category}">
         <a href="${item.src}" class="gallery-item" data-fancybox="gallery">
           <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
           <img src="${imgSrc}"${srcset} sizes="(max-width: 575px) 50vw, (max-width: 991px) 50vw, (max-width: 1199px) 33vw, 25vw" loading="lazy" alt="${item.alt}" class="img-fluid">
         </a>
       </div>`;
-  }
-
-  function renderFilters(filters, currentFilter) {
-    if (!Array.isArray(filters)) {
-      return '';
-    }
-
-    return filters
-      .map(filter => `
-        <button class="filter-btn${filter.value === currentFilter ? ' active' : ''}"
-                data-filter="${filter.value}">${filter.label}</button>`)
-      .join('');
   }
 
   function filterItems(items, filterValue) {
@@ -85,13 +73,27 @@
         return;
       }
 
-      this.filtersContainer.innerHTML = renderFilters(this.filters, this.currentFilter);
+      const buttons = this.filtersContainer.querySelectorAll('.filter-btn');
+      buttons.forEach(button => {
+        button.classList.toggle('active', button.getAttribute('data-filter') === this.currentFilter);
+      });
     },
 
     renderItems: function () {
       const filteredItems = filterItems(this.items, this.currentFilter);
-      const html = filteredItems.map(buildGalleryItem).join('') || '<div class="col-12 text-center"><p class="text-muted">Nenhuma imagem encontrada.</p></div>';
-      this.grid.innerHTML = html;
+
+      this.grid.innerHTML = '';
+
+      if (!filteredItems.length) {
+        this.grid.innerHTML = '<div class="col-12 text-center"><p class="text-muted">Nenhuma imagem encontrada.</p></div>';
+        refreshAOS();
+        return;
+      }
+
+      filteredItems.forEach(item => {
+        this.grid.insertAdjacentHTML('beforeend', buildGalleryItem(item));
+      });
+
       refreshAOS();
     },
 
