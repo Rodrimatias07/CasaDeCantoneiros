@@ -192,8 +192,10 @@ iframe {
 
 .site-logo a {
   color: #fff;
+  display: inline-block;
   font-size: 23px;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .site-header.scrolled .site-logo a,
@@ -683,6 +685,29 @@ textarea.form-control {
   min-height: 140px;
 }
 
+.contact-section form,
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+  box-sizing: border-box;
+}
+
+.contact-section input,
+.contact-section select,
+.contact-section textarea,
+.contact-section .form-control {
+  max-width: 100%;
+  width: 100%;
+}
+
+.contact-section form,
+.contact-section .contact-form-container {
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+}
+
 .info-icon-wrap {
   height: 46px;
   width: 46px;
@@ -721,6 +746,19 @@ textarea.form-control {
   background: #fffaf4;
   border-radius: 8px;
   box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 767px) {
+  .location-section .map-container {
+    margin-bottom: 32px !important;
+    padding: 8px;
+  }
+
+  .location-section .map-container iframe {
+    height: clamp(250px, 38vh, 300px) !important;
+    max-height: 300px;
+    width: 100%;
+  }
 }
 
 .footer-section {
@@ -929,9 +967,40 @@ textarea.form-control {
     padding-right: 24px;
   }
 
+  .site-header .row {
+    align-items: center !important;
+    flex-wrap: nowrap;
+  }
+
+  .site-header .site-logo {
+    flex: 1 1 auto;
+    max-width: calc(100% - 54px);
+    min-width: 0;
+    width: auto;
+  }
+
+  .site-header .site-logo + [class*="col-"] {
+    flex: 0 0 54px;
+    max-width: 54px;
+    width: 54px;
+  }
+
+  .site-header .site-logo + [class*="col-"] {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .site-logo a {
-    font-size: 21px;
-    white-space: normal;
+    display: block;
+    font-size: clamp(1rem, 4.4vw, 1.3rem);
+    line-height: 1.1;
+    overflow: visible;
+    white-space: nowrap;
+  }
+
+  .site-menu-toggle {
+    margin-right: 0;
   }
 
   .site-navbar {
@@ -1033,6 +1102,56 @@ textarea.form-control {
 }
 
 @media (max-width: 767.98px) {
+  .contact-section {
+    overflow: visible;
+    overflow-x: hidden;
+  }
+
+  .contact-section .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .contact-section .contact-form-container {
+    height: auto !important;
+    margin-bottom: 34px;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    padding-left: 0;
+    padding-right: 0;
+    touch-action: pan-y;
+  }
+
+  .contact-section form,
+  .contact-section form .row,
+  .contact-section .form-group {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    touch-action: pan-y;
+  }
+
+  .contact-section input,
+  .contact-section select,
+  .contact-section textarea,
+  .contact-section .form-control {
+    box-sizing: border-box;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contact-section .form-group {
+    margin-bottom: 18px;
+  }
+
+  .contact-section .btn-submit {
+    max-width: 100%;
+    width: 100%;
+  }
+
   .rooms-grid > [class*="col-"]:first-child {
     flex: 0 0 100% !important;
     max-width: 100% !important;
@@ -1124,7 +1243,8 @@ textarea.form-control {
   }
 
   .site-logo a {
-    font-size: 18px;
+    font-size: clamp(1rem, 4.2vw, 1.15rem);
+    white-space: nowrap;
   }
 
   .site-header .container-fluid {
@@ -1331,5 +1451,149 @@ textarea.form-control {
 
   .privacy-block h2 {
     font-size: 25px;
+  }
+}
+
+.cookie-banner {
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: none;
+  left: 50%;
+  max-width: 430px;
+  opacity: 0;
+  padding: 0 16px;
+  position: fixed;
+  transform: translate(-50%, 22px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  width: min(100%, 430px);
+  z-index: 9999;
+}
+
+.cookie-banner.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.cookie-banner__content {
+  background: rgba(255, 250, 244, 0.98);
+  border: 1px solid rgba(222, 214, 200, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(24, 35, 27, 0.22);
+  padding: 24px 20px 18px;
+  position: relative;
+}
+
+.cookie-banner__close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--color-muted);
+  cursor: pointer;
+  display: flex;
+  font-size: 24px;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  position: absolute;
+  right: 24px;
+  top: 14px;
+  width: 34px;
+  z-index: 1;
+}
+
+.cookie-banner__close:hover {
+  color: var(--color-forest);
+}
+
+.cookie-banner__eyebrow {
+  color: var(--color-gold);
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+  padding-right: 36px;
+  text-transform: uppercase;
+}
+
+.cookie-banner__text {
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.cookie-banner__actions {
+  display: grid;
+  gap: 10px;
+}
+
+.cookie-banner__button {
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  min-height: 46px;
+  padding: 12px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.cookie-banner__button--primary {
+  background: var(--color-sage);
+  border: 1px solid var(--color-sage);
+  color: #fff;
+}
+
+.cookie-banner__button--primary:hover {
+  background: var(--color-forest);
+  border-color: var(--color-forest);
+  transform: translateY(-1px);
+}
+
+.cookie-banner__button--secondary {
+  background: transparent;
+  border: 1px solid var(--color-line);
+  color: var(--color-sage);
+}
+
+.cookie-banner__button--secondary:hover {
+  border-color: var(--color-sage);
+  color: var(--color-forest);
+}
+
+.cookie-banner__links {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.cookie-banner__links a {
+  color: var(--color-sage);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .cookie-banner {
+    bottom: 24px;
+    left: 24px;
+    max-width: 440px;
+    padding: 0;
+    transform: translateY(22px);
+    width: 440px;
+  }
+
+  .cookie-banner.is-visible {
+    transform: translateY(0);
+  }
+
+  .cookie-banner__content {
+    padding: 26px 24px 20px;
   }
 }

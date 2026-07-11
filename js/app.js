@@ -60,7 +60,9 @@
       this.initDatePickers();
       this.initGuestPickers();
       this.initReservationPrefill();
+      this.initReservationDateValidation();
       this.initBookingFastForm();
+      this.initCookieConsent();
     },
 
     /**
@@ -238,10 +240,14 @@
       if ($.fn.datepicker) {
         $('#m_date').datepicker({
           'format': 'm/d/yyyy',
+          'startDate': new Date(),
           'autoclose': true
         });
-        $('#checkin_date, #checkout_date').datepicker({
+        $('#checkin_date, #checkout_date').filter(function () {
+          return this.type !== 'date';
+        }).datepicker({
           'format': 'd MM, yyyy', // Format: 10 Outubro, 2026
+          'startDate': new Date(),
           'autoclose': true,
           // If we wanted to localize to PT completely we would add language options here
         });
@@ -342,6 +348,105 @@
     },
 
     /**
+     * Enforce native date input rules for the reservation form.
+     * Keeps mobile on a single native calendar and blocks invalid stays.
+     */
+    initReservationDateValidation: function () {
+      const checkin = document.querySelector('input[type="date"]#checkin_date');
+      const checkout = document.querySelector('input[type="date"]#checkout_date');
+
+      if (!checkin && !checkout) return;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const formatDate = function (date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      };
+
+      const addDays = function (value, days) {
+        const date = new Date(`${value}T00:00:00`);
+        if (Number.isNaN(date.getTime())) return '';
+        date.setDate(date.getDate() + days);
+        return formatDate(date);
+      };
+
+      const todayValue = formatDate(today);
+
+      if (checkin) {
+        checkin.min = todayValue;
+      }
+
+      if (checkout) {
+        checkout.min = checkin && checkin.value ? addDays(checkin.value, 1) : todayValue;
+      }
+
+      const syncCheckoutMin = function () {
+        if (checkin) checkin.setCustomValidity('');
+        if (checkout) checkout.setCustomValidity('');
+
+        if (!checkin || !checkout) return;
+
+        const nextDay = checkin.value ? addDays(checkin.value, 1) : todayValue;
+        checkout.min = nextDay;
+
+        if (checkout.value && checkout.value < nextDay) {
+          checkout.value = '';
+        }
+      };
+
+      if (checkin) {
+        checkin.addEventListener('change', syncCheckoutMin);
+        checkin.addEventListener('input', syncCheckoutMin);
+      }
+
+      if (checkout) {
+        checkout.addEventListener('change', function () {
+          checkout.setCustomValidity('');
+        });
+        checkout.addEventListener('input', function () {
+          checkout.setCustomValidity('');
+        });
+      }
+
+      const form = checkin ? checkin.closest('form') : checkout.closest('form');
+      if (!form) return;
+
+      form.addEventListener('submit', function (event) {
+        if (checkin && checkin.value && checkin.value < todayValue) {
+          event.preventDefault();
+          checkin.setCustomValidity('A data de entrada não pode ser anterior a hoje.');
+          checkin.reportValidity();
+          return;
+        }
+
+        if (checkout && checkout.value && checkout.value < todayValue) {
+          event.preventDefault();
+          checkout.setCustomValidity('A data de saída não pode ser anterior a hoje.');
+          checkout.reportValidity();
+          return;
+        }
+
+        if (checkin && checkout && checkin.value && checkout.value) {
+          const minimumCheckout = addDays(checkin.value, 1);
+
+          if (checkout.value < minimumCheckout) {
+            event.preventDefault();
+            checkout.setCustomValidity('A data de saída tem de ser pelo menos um dia depois da entrada.');
+            checkout.reportValidity();
+            return;
+          }
+        }
+
+        if (checkin) checkin.setCustomValidity('');
+        if (checkout) checkout.setCustomValidity('');
+      });
+    },
+
+    /**
      * Initialize Fast Booking Form Redirect
      */
     initBookingFastForm: function () {
@@ -422,6 +527,65 @@
       if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
       }
+    },
+
+    /**
+     * Cookie consent bottom sheet with localStorage persistence.
+     */
+    initCookieConsent: function () {
+      const banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+
+      const storageKey = 'cookie_consent';
+
+      const readConsent = function () {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch (error) {
+          return null;
+        }
+      };
+
+      const saveConsent = function (choice) {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify({
+            choice: choice,
+            savedAt: new Date().toISOString()
+          }));
+        } catch (error) {
+          // Browsers can block localStorage in private modes; the banner still closes for this session.
+        }
+      };
+
+      const showBanner = function () {
+        banner.style.display = 'block';
+        window.setTimeout(function () {
+          banner.classList.add('is-visible');
+          banner.setAttribute('aria-hidden', 'false');
+        }, 20);
+      };
+
+      const hideBanner = function () {
+        banner.classList.remove('is-visible');
+        banner.setAttribute('aria-hidden', 'true');
+        window.setTimeout(function () {
+          banner.style.display = 'none';
+        }, 280);
+      };
+
+      if (readConsent()) {
+        banner.style.display = 'none';
+        return;
+      }
+
+      banner.querySelectorAll('[data-cookie-choice]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          saveConsent(button.getAttribute('data-cookie-choice'));
+          hideBanner();
+        });
+      });
+
+      window.setTimeout(showBanner, 500);
     }
   };
 
