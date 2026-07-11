@@ -1693,3 +1693,31 @@ textarea.form-control {
     right: auto;
   }
 }
+
+/* Static amenities: informational cards must not behave like clickable controls. */
+.amenity-card,
+.amenity-card:hover,
+.amenity-card:focus,
+.amenity-card:active {
+  background: rgba(255, 255, 255, 0.055) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: var(--shadow-card) !important;
+  cursor: default !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Reservation/contact forms: keep every field inside its mobile container. */
+.contact-section form,
+.contact-section .form-group,
+.contact-section input,
+.contact-section select,
+.contact-section textarea,
+.contact-section .form-control,
+.contact-section input[type="date"] {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}

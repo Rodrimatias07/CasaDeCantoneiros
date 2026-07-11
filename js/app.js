@@ -390,6 +390,10 @@
 
         if (!checkin || !checkout) return;
 
+        if (checkin.value && checkin.value < todayValue) {
+          checkin.value = '';
+        }
+
         const nextDay = checkin.value ? addDays(checkin.value, 1) : todayValue;
         checkout.min = nextDay;
 
@@ -397,6 +401,8 @@
           checkout.value = '';
         }
       };
+
+      syncCheckoutMin();
 
       if (checkin) {
         checkin.addEventListener('change', syncCheckoutMin);
