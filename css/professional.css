@@ -623,6 +623,14 @@ iframe {
   font-size: 24px;
 }
 
+.room-content .btn {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .gallery-item {
   background: #ddd3c5;
   border-radius: 8px;
@@ -1595,5 +1603,93 @@ textarea.form-control {
 
   .cookie-banner__content {
     padding: 26px 24px 20px;
+  }
+}
+
+/* Mobile form pages: prevent inner scroll traps on contact/reservation forms. */
+@media (max-width: 767.98px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+
+  .contact-section,
+  .contact-section .container,
+  .contact-section .row,
+  .contact-section [class*="col-"],
+  .contact-section .contact-form-container,
+  .contact-section form,
+  .contact-section form .row,
+  .contact-section .form-group,
+  .contact-section .info-cards-container,
+  .contact-section .info-card,
+  .contact-section .social-links-section,
+  .contact-section .reservation-disclaimer {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+
+  .contact-section,
+  .contact-section .container,
+  .contact-section .row,
+  .contact-section [class*="col-"],
+  .contact-section .contact-form-container,
+  .contact-section form,
+  .contact-section form .row,
+  .contact-section .form-group {
+    overflow: visible !important;
+  }
+}
+
+/* Mobile timeline: line/year on the left, content cards on the right. */
+@media (max-width: 767.98px) {
+  .timeline-v2 {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .timeline-line {
+    left: 30px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .timeline-item-v2,
+  .timeline-item-v2.left,
+  .timeline-item-v2.right {
+    align-items: stretch !important;
+    display: block !important;
+    flex-direction: initial !important;
+    justify-content: initial !important;
+    padding-left: 70px !important;
+    position: relative;
+    width: 100%;
+  }
+
+  .timeline-node {
+    left: 30px !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 0;
+    transform: translateX(-50%) !important;
+    z-index: 2;
+  }
+
+  .timeline-card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .timeline-card::before,
+  .timeline-card::after {
+    left: -10px;
+    right: auto;
   }
 }
