@@ -119,6 +119,151 @@ iframe {
   font-weight: 400;
 }
 
+.tarifas-section {
+  background: #f0ece4;
+  padding: 78px 0;
+}
+
+.tarifas-section--index {
+  background: var(--color-forest);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tarifas-section--index .section-title {
+  color: #fff;
+}
+
+.tarifas-section--index .section-subtitle {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.tarifas-section--index .tarifa-card {
+  background: #eef1ea;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.tarifas-header {
+  margin: 0 auto 34px;
+  max-width: 720px;
+  text-align: center;
+}
+
+.tarifas-eyebrow {
+  color: var(--color-gold);
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.tarifas-header .section-title {
+  margin-bottom: 14px;
+}
+
+.tarifas-header .section-subtitle {
+  color: var(--color-muted) !important;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  line-height: 1.6;
+  margin: 0;
+  text-transform: none;
+}
+
+.tarifas-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 18px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 760px;
+  width: 100%;
+}
+
+.tarifa-card {
+  background: #fffaf4;
+  border: 1px solid rgba(95, 115, 93, 0.12);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 26px 20px;
+  text-align: center;
+}
+
+.tarifa-titulo {
+  color: var(--color-ink);
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tarifa-meses {
+  color: var(--color-muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.tarifa-preco {
+  color: var(--color-forest);
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.tarifa-preco span {
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .tarifas-section {
+    padding: 54px 0;
+  }
+
+  .tarifas-header {
+    margin-bottom: 24px;
+  }
+
+  .tarifas-cards-container {
+    gap: 10px;
+  }
+
+  .tarifa-card {
+    padding: 18px 10px;
+  }
+
+  .tarifa-titulo {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  .tarifa-meses {
+    font-size: 12px;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+
+  .tarifa-preco {
+    font-size: clamp(28px, 8vw, 34px);
+  }
+
+  .tarifa-preco span {
+    display: block;
+    font-size: 11px;
+    margin-top: 6px;
+  }
+}
+
 .fa {
   font-family: FontAwesome !important;
 }
