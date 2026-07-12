@@ -2262,3 +2262,63 @@ textarea.form-control {
     text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  h1,
+  h2,
+  h3,
+  .heading,
+  .section-title,
+  .site-hero .heading,
+  .site-hero-inner .heading,
+  .inner-page .site-hero-inner .heading,
+  .section-subtitle,
+  .custom-caption,
+  .text-gold,
+  .lead,
+  .amenity-card h3,
+  .philosophy-card h3,
+  .room-content h3,
+  .timeline-card h3,
+  .tarifa-titulo,
+  .footer-brand,
+  .footer-heading {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    word-break: keep-all;
+  }
+
+  .heading,
+  .section-title {
+    font-size: clamp(1.6rem, 6.2vw, 2.375rem) !important;
+  }
+
+  .site-hero-inner .heading,
+  .site-hero .heading {
+    font-size: clamp(1.75rem, 8.2vw, 2.875rem) !important;
+    line-height: 1.06;
+  }
+
+  .inner-page .site-hero-inner .heading {
+    font-size: clamp(1.75rem, 7.8vw, 2.75rem) !important;
+  }
+
+  .amenity-card h3,
+  .philosophy-card h3,
+  .room-content h3,
+  .timeline-card h3,
+  .tarifa-titulo {
+    font-size: clamp(1rem, 3.8vw, 1.5rem) !important;
+  }
+
+  .section-subtitle,
+  .custom-caption,
+  .text-gold,
+  .lead {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+}
