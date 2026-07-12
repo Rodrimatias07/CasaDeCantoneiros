@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/carrossel.css">
   <link rel="stylesheet" href="css/animacoes.css">
+  <link rel="stylesheet" href="css/calendario.css">
   <link rel="stylesheet" href="css/relogio.css">
   <link rel="stylesheet" href="css/popup.css">
 
@@ -91,11 +92,13 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="checkin_date">Check-in *</label>
-                  <input type="date" id="checkin_date" name="checkin" class="form-control" required>
+                  <input type="text" id="checkin_date" name="checkin" class="form-control" placeholder="DD/MM/AAAA"
+                    autocomplete="off" inputmode="none" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="checkout_date">Check-out *</label>
-                  <input type="date" id="checkout_date" name="checkout" class="form-control" required>
+                  <input type="text" id="checkout_date" name="checkout" class="form-control" placeholder="DD/MM/AAAA"
+                    autocomplete="off" inputmode="none" required>
                 </div>
               </div>
 
@@ -232,6 +235,7 @@
 
   <script src="js/animacoes.js"></script>
 
+  <script src="js/calendario.js"></script>
   <script src="js/relogio.js"></script>
 
 

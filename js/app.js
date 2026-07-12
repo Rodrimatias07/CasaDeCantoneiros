@@ -60,6 +60,7 @@
       this.initDatePickers();
       this.initGuestPickers();
       this.initReservationPrefill();
+      this.initReservationSelectPickers();
       this.initReservationDateValidation();
       this.initBookingFastForm();
       this.initCookieConsent();
@@ -239,17 +240,16 @@
     initDatePickers: function () {
       if ($.fn.datepicker) {
         $('#m_date').datepicker({
-          'format': 'm/d/yyyy',
+          'format': 'dd/mm/yyyy',
           'startDate': new Date(),
           'autoclose': true
         });
         $('#checkin_date, #checkout_date').filter(function () {
           return this.type !== 'date';
         }).datepicker({
-          'format': 'd MM, yyyy', // Format: 10 Outubro, 2026
+          'format': 'dd/mm/yyyy',
           'startDate': new Date(),
-          'autoclose': true,
-          // If we wanted to localize to PT completely we would add language options here
+          'autoclose': true
         });
       }
       if ($.fn.timepicker) {
@@ -301,6 +301,107 @@
     },
 
     /**
+     * Replace reservation native selects with a polished custom picker.
+     * The original select remains synced for form submission.
+     */
+    initReservationSelectPickers: function () {
+      const selects = document.querySelectorAll('form[action="enviar_reserva.php"] select#adults, form[action="enviar_reserva.php"] select#children');
+      if (!selects.length) return;
+
+      const closeAll = function (exceptPicker) {
+        document.querySelectorAll('.reservation-select-picker.is-open').forEach(function (picker) {
+          if (picker !== exceptPicker) {
+            picker.classList.remove('is-open');
+            const toggle = picker.querySelector('.reservation-select-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      };
+
+      selects.forEach(function (select) {
+        if (select.dataset.enhanced === 'true') return;
+
+        const picker = document.createElement('div');
+        const toggle = document.createElement('button');
+        const value = document.createElement('span');
+        const arrow = document.createElement('span');
+        const menu = document.createElement('div');
+
+        select.dataset.enhanced = 'true';
+        select.classList.add('enhanced-select-native');
+        select.tabIndex = -1;
+
+        picker.className = 'reservation-select-picker';
+        toggle.type = 'button';
+        toggle.className = 'reservation-select-toggle';
+        toggle.setAttribute('aria-haspopup', 'listbox');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', select.previousElementSibling ? select.previousElementSibling.textContent.replace('*', '').trim() : 'Selecionar opção');
+
+        value.className = 'reservation-select-value';
+        arrow.className = 'reservation-select-arrow';
+        menu.className = 'reservation-select-menu';
+        menu.setAttribute('role', 'listbox');
+
+        toggle.appendChild(value);
+        toggle.appendChild(arrow);
+        picker.appendChild(toggle);
+        picker.appendChild(menu);
+        select.insertAdjacentElement('afterend', picker);
+
+        const refresh = function () {
+          value.textContent = select.options[select.selectedIndex] ? select.options[select.selectedIndex].textContent : '';
+          menu.querySelectorAll('.reservation-select-option').forEach(function (button) {
+            const isSelected = button.dataset.value === select.value;
+            button.classList.toggle('is-selected', isSelected);
+            button.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          });
+        };
+
+        Array.from(select.options).forEach(function (option) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'reservation-select-option';
+          button.dataset.value = option.value;
+          button.textContent = option.textContent;
+          button.setAttribute('role', 'option');
+
+          button.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            select.value = option.value;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            picker.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            refresh();
+          });
+
+          menu.appendChild(button);
+        });
+
+        toggle.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          const willOpen = !picker.classList.contains('is-open');
+          closeAll(picker);
+          picker.classList.toggle('is-open', willOpen);
+          toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        });
+
+        select.addEventListener('change', refresh);
+        refresh();
+      });
+
+      document.addEventListener('click', function () {
+        closeAll();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeAll();
+      });
+    },
+
+    /**
      * Prefill the full reservation form from the quick booking bar.
      */
     initReservationPrefill: function () {
@@ -309,24 +410,28 @@
 
       const parseBookingDate = function (value) {
         if (!value) return '';
-        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+        if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return value;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+          const parts = value.split('-');
+          return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
 
         const cleaned = value.replace(',', '').trim().toLowerCase();
         const parts = cleaned.split(/\s+/);
         if (parts.length < 3) return '';
 
         const months = {
-          january: '01', fevereiro: '02', february: '02', marco: '03', março: '03', march: '03',
-          abril: '04', april: '04', maio: '05', may: '05', junho: '06', june: '06',
-          julho: '07', july: '07', agosto: '08', august: '08', setembro: '09', september: '09',
-          outubro: '10', october: '10', novembro: '11', november: '11', dezembro: '12', december: '12'
+          'january': '01', 'fevereiro': '02', 'february': '02', 'marco': '03', 'mar\u00e7o': '03', 'march': '03',
+          'abril': '04', 'april': '04', 'maio': '05', 'may': '05', 'junho': '06', 'june': '06',
+          'julho': '07', 'july': '07', 'agosto': '08', 'august': '08', 'setembro': '09', 'september': '09',
+          'outubro': '10', 'october': '10', 'novembro': '11', 'november': '11', 'dezembro': '12', 'december': '12'
         };
 
         const day = parts[0].padStart(2, '0');
         const month = months[parts[1]];
         const year = parts[2];
 
-        return month && year ? `${year}-${month}-${day}` : '';
+        return month && year ? `${day}/${month}/${year}` : '';
       };
 
       const setSelectByPrefix = function ($select, value) {
@@ -348,41 +453,150 @@
     },
 
     /**
-     * Enforce native date input rules for the reservation form.
-     * Keeps mobile on a single native calendar and blocks invalid stays.
+     * Enforce reservation date rules in Portuguese display format.
      */
     initReservationDateValidation: function () {
-      const checkin = document.querySelector('input[type="date"]#checkin_date');
-      const checkout = document.querySelector('input[type="date"]#checkout_date');
+      const form = document.querySelector('form[action="enviar_reserva.php"]');
+      const checkin = form ? form.querySelector('#checkin_date') : null;
+      const checkout = form ? form.querySelector('#checkout_date') : null;
+      const dateInputs = [checkin, checkout].filter(Boolean);
 
       if (!checkin && !checkout) return;
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
-      const formatDate = function (date) {
+      const formatDisplayDate = function (date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      };
+
+      const formatIsoDate = function (date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
       };
 
-      const addDays = function (value, days) {
-        const date = new Date(`${value}T00:00:00`);
-        if (Number.isNaN(date.getTime())) return '';
-        date.setDate(date.getDate() + days);
-        return formatDate(date);
+      const parseDisplayDate = function (value) {
+        if (!value) return null;
+
+        const trimmed = value.trim();
+
+        if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+          const isoParts = trimmed.split('-').map(Number);
+          const isoDate = new Date(isoParts[0], isoParts[1] - 1, isoParts[2]);
+          return Number.isNaN(isoDate.getTime()) ? null : isoDate;
+        }
+
+        const match = trimmed.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!match) return null;
+
+        const day = Number(match[1]);
+        const month = Number(match[2]);
+        const year = Number(match[3]);
+        const date = new Date(year, month - 1, day);
+
+        if (
+          Number.isNaN(date.getTime()) ||
+          date.getDate() !== day ||
+          date.getMonth() !== month - 1 ||
+          date.getFullYear() !== year
+        ) {
+          return null;
+        }
+
+        return date;
       };
 
-      const todayValue = formatDate(today);
+      const addDays = function (date, days) {
+        if (!(date instanceof Date) || Number.isNaN(date.getTime())) return null;
+        const nextDate = new Date(date.getTime());
+        nextDate.setDate(nextDate.getDate() + days);
+        nextDate.setHours(0, 0, 0, 0);
+        return nextDate;
+      };
 
-      if (checkin) {
-        checkin.min = todayValue;
-      }
+      const compareDates = function (first, second) {
+        if (!first || !second) return 0;
+        const firstTime = new Date(first.getFullYear(), first.getMonth(), first.getDate()).getTime();
+        const secondTime = new Date(second.getFullYear(), second.getMonth(), second.getDate()).getTime();
+        return firstTime - secondTime;
+      };
 
-      if (checkout) {
-        checkout.min = checkin && checkin.value ? addDays(checkin.value, 1) : todayValue;
-      }
+      const setDatepickerStart = function (input, date) {
+        if (!input || !$.fn.datepicker || !(date instanceof Date)) return;
+
+        try {
+          $(input).datepicker('setStartDate', date);
+        } catch (error) {
+          // The field may not have a datepicker instance in some pages.
+        }
+      };
+
+      const clearDatepickerField = function (input) {
+        if (!input) return;
+
+        input.value = '';
+        if ($.fn.datepicker) {
+          try {
+            $(input).datepicker('clearDates');
+          } catch (error) {
+            input.value = '';
+          }
+        }
+      };
+
+      const normalizeTypedValue = function (input) {
+        const parsed = parseDisplayDate(input.value);
+        if (parsed) {
+          input.value = formatDisplayDate(parsed);
+        }
+        return parsed;
+      };
+
+      const todayValue = formatIsoDate(today);
+
+      document.documentElement.setAttribute('lang', 'pt-PT');
+
+      dateInputs.forEach(function (input) {
+        input.setAttribute('lang', 'pt-PT');
+        input.setAttribute('inputmode', 'none');
+        input.setAttribute('placeholder', 'DD/MM/AAAA');
+        input.setAttribute('pattern', '\\d{2}/\\d{2}/\\d{4}');
+        input.setAttribute('autocomplete', 'off');
+        input.readOnly = true;
+        input.min = todayValue;
+
+        setDatepickerStart(input, today);
+        if (input.value && $.fn.datepicker) {
+          $(input).datepicker('update', input.value);
+        }
+
+        input.addEventListener('click', function () {
+          if (input === checkout) {
+            syncCheckoutMin();
+          }
+
+          if ($.fn.datepicker) {
+            $(input).datepicker('show');
+          }
+        });
+      });
+
+      const clearInvalidCheckout = function () {
+        if (!checkout) return;
+
+        const checkoutDate = parseDisplayDate(checkout.value);
+        const checkinDate = parseDisplayDate(checkin ? checkin.value : '');
+        const minimumCheckout = checkinDate ? addDays(checkinDate, 1) : today;
+
+        if (checkout.value && (!checkoutDate || compareDates(checkoutDate, minimumCheckout) < 0)) {
+          clearDatepickerField(checkout);
+        }
+      };
 
       const syncCheckoutMin = function () {
         if (checkin) checkin.setCustomValidity('');
@@ -390,58 +604,90 @@
 
         if (!checkin || !checkout) return;
 
-        if (checkin.value && checkin.value < todayValue) {
-          checkin.value = '';
+        const checkinDate = normalizeTypedValue(checkin);
+
+        if (checkin.value && (!checkinDate || compareDates(checkinDate, today) < 0)) {
+          clearDatepickerField(checkin);
+          setDatepickerStart(checkout, today);
+          clearInvalidCheckout();
+          return;
         }
 
-        const nextDay = checkin.value ? addDays(checkin.value, 1) : todayValue;
-        checkout.min = nextDay;
+        const nextDay = checkinDate ? addDays(checkinDate, 1) : today;
+        checkout.min = formatIsoDate(nextDay);
+        setDatepickerStart(checkout, nextDay);
 
-        if (checkout.value && checkout.value < nextDay) {
-          checkout.value = '';
-        }
+        clearInvalidCheckout();
       };
 
       syncCheckoutMin();
 
       if (checkin) {
         checkin.addEventListener('change', syncCheckoutMin);
-        checkin.addEventListener('input', syncCheckoutMin);
+        if ($.fn.datepicker) {
+          $(checkin).off('changeDate.reservation').on('changeDate.reservation', function () {
+            syncCheckoutMin();
+          });
+        }
       }
 
       if (checkout) {
         checkout.addEventListener('change', function () {
           checkout.setCustomValidity('');
+          normalizeTypedValue(checkout);
+          clearInvalidCheckout();
         });
-        checkout.addEventListener('input', function () {
-          checkout.setCustomValidity('');
-        });
+        if ($.fn.datepicker) {
+          $(checkout).off('show.reservation changeDate.reservation').on('show.reservation', function () {
+            syncCheckoutMin();
+          }).on('changeDate.reservation', function () {
+            checkout.setCustomValidity('');
+            normalizeTypedValue(checkout);
+            clearInvalidCheckout();
+          });
+        }
       }
 
-      const form = checkin ? checkin.closest('form') : checkout.closest('form');
       if (!form) return;
 
       form.addEventListener('submit', function (event) {
-        if (checkin && checkin.value && checkin.value < todayValue) {
+        const checkinDate = parseDisplayDate(checkin ? checkin.value : '');
+        const checkoutDate = parseDisplayDate(checkout ? checkout.value : '');
+
+        if (checkin && !checkinDate) {
           event.preventDefault();
-          checkin.setCustomValidity('A data de entrada não pode ser anterior a hoje.');
+          checkin.setCustomValidity('Escolha uma data de entrada no formato DD/MM/AAAA.');
           checkin.reportValidity();
           return;
         }
 
-        if (checkout && checkout.value && checkout.value < todayValue) {
+        if (checkout && !checkoutDate) {
           event.preventDefault();
-          checkout.setCustomValidity('A data de saída não pode ser anterior a hoje.');
+          checkout.setCustomValidity('Escolha uma data de sa\u00edda no formato DD/MM/AAAA.');
           checkout.reportValidity();
           return;
         }
 
-        if (checkin && checkout && checkin.value && checkout.value) {
-          const minimumCheckout = addDays(checkin.value, 1);
+        if (checkinDate && compareDates(checkinDate, today) < 0) {
+          event.preventDefault();
+          checkin.setCustomValidity('A data de entrada n\u00e3o pode ser anterior a hoje.');
+          checkin.reportValidity();
+          return;
+        }
 
-          if (checkout.value < minimumCheckout) {
+        if (checkoutDate && compareDates(checkoutDate, today) < 0) {
+          event.preventDefault();
+          checkout.setCustomValidity('A data de sa\u00edda n\u00e3o pode ser anterior a hoje.');
+          checkout.reportValidity();
+          return;
+        }
+
+        if (checkinDate && checkoutDate) {
+          const minimumCheckout = addDays(checkinDate, 1);
+
+          if (compareDates(checkoutDate, minimumCheckout) < 0) {
             event.preventDefault();
-            checkout.setCustomValidity('A data de saída tem de ser pelo menos um dia depois da entrada.');
+            checkout.setCustomValidity('A data de sa\u00edda tem de ser pelo menos um dia depois da entrada.');
             checkout.reportValidity();
             return;
           }
@@ -451,6 +697,7 @@
         if (checkout) checkout.setCustomValidity('');
       });
     },
+
 
     /**
      * Initialize Fast Booking Form Redirect
@@ -468,8 +715,8 @@
 
           // WhatsApp direct flow kept as fallback if the client wants it again later.
           // const adultsText = adults === '1' ? '1 adulto' : `${adults} adultos`;
-          // const childrenText = children === '1' ? '1 criança' : `${children} crianças`;
-          // const message = `Olá! Gostaria de fazer uma reserva de ${checkin} a ${checkout} para ${adultsText} e ${childrenText}.`;
+          // const childrenText = children === '1' ? '1 crianÃ§a' : `${children} crianÃ§as`;
+          // const message = `OlÃ¡! Gostaria de fazer uma reserva de ${checkin} a ${checkout} para ${adultsText} e ${childrenText}.`;
           // const whatsappUrl = `https://wa.me/351965507158?text=${encodeURIComponent(message)}`;
           // window.open(whatsappUrl, '_blank');
 
