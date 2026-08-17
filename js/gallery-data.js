@@ -1,63 +1,98 @@
 window.galleryData = [
   {
     "category": "envolvente",
-    "src": "images/galeria/envolvente/detalhe-1.jpg",
-    "alt": "Detalhe 1"
+    "src": "images/galeria/envolvente/balanco-panoramico.jpg",
+    "alt": "Balanco Panoramico"
   },
   {
     "category": "envolvente",
-    "src": "images/galeria/envolvente/detalhe-2.jpg",
-    "alt": "Detalhe 2"
+    "src": "images/galeria/envolvente/cascata-no-inverno.jpg",
+    "alt": "Cascata No Inverno"
   },
   {
     "category": "envolvente",
-    "src": "images/galeria/envolvente/detalhe-3.jpg",
-    "alt": "Detalhe 3"
+    "src": "images/galeria/envolvente/paisagem-de-inverno.jpg",
+    "alt": "Paisagem De Inverno"
   },
   {
     "category": "envolvente",
-    "src": "images/galeria/envolvente/detalhe-4.jpg",
-    "alt": "Detalhe 4"
+    "src": "images/galeria/envolvente/placa-casa-cantoneiros.jpg",
+    "alt": "Placa Casa Cantoneiros"
   },
   {
     "category": "envolvente",
-    "src": "images/galeria/envolvente/detalhe-5.jpg",
-    "alt": "Detalhe 5"
-  },
-  {
-    "category": "envolvente",
-    "src": "images/galeria/envolvente/detalhe-6.jpg",
-    "alt": "Detalhe 6"
+    "src": "images/galeria/envolvente/rebanho-na-aldeia.jpg",
+    "alt": "Rebanho Na Aldeia"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/area-conversas-1.jpg",
-    "alt": "Area Conversas 1"
+    "src": "images/galeria/exterior/acesso-casa-cantoneiros.png",
+    "alt": "Acesso Casa Cantoneiros"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/churrasqueira-1.jpg",
-    "alt": "Churrasqueira 1"
+    "src": "images/galeria/exterior/cascata-natural.jpg",
+    "alt": "Cascata Natural"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/jardim-1.jpg",
-    "alt": "Jardim 1"
+    "src": "images/galeria/exterior/churrasqueira-exterior.png",
+    "alt": "Churrasqueira Exterior"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/rio-1.jpg",
-    "alt": "Rio 1"
+    "src": "images/galeria/exterior/corredor-entrada.png",
+    "alt": "Corredor Entrada"
   },
   {
-    "category": "interior",
-    "src": "images/galeria/interior/casa-de-banho-1.jpg",
-    "alt": "Casa De Banho 1"
+    "category": "exterior",
+    "src": "images/galeria/exterior/fachada-lateral.png",
+    "alt": "Fachada Lateral"
   },
   {
-    "category": "interior",
-    "src": "images/galeria/interior/casa-de-banho-2.jpg",
-    "alt": "Casa De Banho 2"
+    "category": "exterior",
+    "src": "images/galeria/exterior/IMG_3452.png",
+    "alt": "IMG 3452"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/IMG_3468.png",
+    "alt": "IMG 3468"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/IMG_3474.png",
+    "alt": "IMG 3474"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/IMG_3503.png",
+    "alt": "IMG 3503"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/IMG_4127.png",
+    "alt": "IMG 4127"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/marco-casa-cantoneiros.png",
+    "alt": "Marco Casa Cantoneiros"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/portao-entrada.png",
+    "alt": "Portao Entrada"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/ribeiro-natural.jpg",
+    "alt": "Ribeiro Natural"
+  },
+  {
+    "category": "exterior",
+    "src": "images/galeria/exterior/zona-descanso-jardim.png",
+    "alt": "Zona Descanso Jardim"
   },
   {
     "category": "interior",
@@ -71,52 +106,52 @@ window.galleryData = [
   },
   {
     "category": "interior",
+    "src": "images/galeria/interior/detalhe-toalhas.png",
+    "alt": "Detalhe Toalhas"
+  },
+  {
+    "category": "interior",
     "src": "images/galeria/interior/IMG_3421.jpeg",
-    "alt": "Img 3421"
+    "alt": "IMG 3421"
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3422.jpeg",
-    "alt": "Img 3422"
+    "alt": "IMG 3422"
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3425.jpeg",
-    "alt": "Img 3425"
+    "alt": "IMG 3425"
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3431.jpeg",
-    "alt": "Img 3431"
+    "alt": "IMG 3431"
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3434.jpeg",
-    "alt": "Img 3434"
-  },
-  {
-    "category": "interior",
-    "src": "images/galeria/interior/IMG_3436.jpeg",
-    "alt": "Img 3436"
+    "alt": "IMG 3434"
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3437.jpeg",
-    "alt": "Img 3437"
+    "alt": "IMG 3437"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/janela-quarto.png",
+    "alt": "Janela Quarto"
+  },
+  {
+    "category": "interior",
+    "src": "images/galeria/interior/quarto-parede-pedra.png",
+    "alt": "Quarto Parede Pedra"
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/quarto.jpg",
     "alt": "Quarto"
-  },
-  {
-    "category": "interior",
-    "src": "images/galeria/interior/sala-cozinha-1.jpg",
-    "alt": "Sala Cozinha 1"
-  },
-  {
-    "category": "interior",
-    "src": "images/galeria/interior/sala-cozinha-2.jpg",
-    "alt": "Sala Cozinha 2"
   }
 ];

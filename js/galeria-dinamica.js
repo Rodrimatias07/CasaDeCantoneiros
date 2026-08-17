@@ -1,20 +1,4 @@
-const endpointGaleria = 'obter_galeria.php';
-
 let todasAsImagens = [];
-
-const imagensFallbackGaleria = [
-  { url: 'images/galeria/envolvente/detalhe-2.jpg', categoria: 'envolvente' },
-  { url: 'images/galeria/interior/casa-de-banho.jpg', categoria: 'interior' },
-  { url: 'images/galeria/interior/cozinha.jpg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3421.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3422.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3425.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3431.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3434.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3436.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/IMG_3437.jpeg', categoria: 'interior' },
-  { url: 'images/galeria/interior/quarto.jpg', categoria: 'interior' }
-];
 
 function escaparHtml(valor) {
   return String(valor || '')
@@ -48,8 +32,8 @@ function normalizarImagem(item) {
     return null;
   }
 
-  const url = String(item.url || '').trim();
-  const categoria = normalizarCategoria(item.categoria);
+  const url = String(item.url || item.src || '').trim();
+  const categoria = normalizarCategoria(item.categoria || item.category);
 
   if (!url || !categoria) {
     return null;
@@ -181,44 +165,9 @@ function aplicarDadosGaleria(lista) {
   renderizarGaleria('todos');
 }
 
-function usarFallbackGaleria(motivo) {
-  console.warn('Galeria dinamica indisponivel. A usar fallback local.', motivo);
-  aplicarDadosGaleria(imagensFallbackGaleria);
-}
-
 function carregarGaleria() {
   ligarBotoesFiltro();
-
-  fetch(endpointGaleria, { cache: 'no-store' })
-    .then(function (resposta) {
-      if (!resposta.ok) {
-        throw new Error('Resposta invalida da galeria: ' + resposta.status);
-      }
-
-      return resposta.text();
-    })
-    .then(function (texto) {
-      let dados;
-
-      try {
-        dados = JSON.parse(texto);
-      } catch (erro) {
-        usarFallbackGaleria(erro);
-        return;
-      }
-
-      console.log('DADOS DA GALERIA:', dados);
-
-      if (!Array.isArray(dados) || dados.length === 0) {
-        usarFallbackGaleria('JSON recebido nao e um array ou veio vazio.');
-        return;
-      }
-
-      aplicarDadosGaleria(dados);
-    })
-    .catch(function (erro) {
-      usarFallbackGaleria(erro);
-    });
+  aplicarDadosGaleria(window.galleryData || []);
 }
 
 document.addEventListener('DOMContentLoaded', carregarGaleria);
