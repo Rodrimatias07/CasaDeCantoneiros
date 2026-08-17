@@ -57,6 +57,7 @@
   </section>
   <!-- END section -->
 
+  <!-- Formulário de Reserva -->
   <section class="section contact-section" id="next">
     <div class="container">
       <div class="row">
@@ -67,19 +68,23 @@
             <p class="section-description">Preencha o formulário abaixo e entraremos em contacto consigo dentro de 24
               horas para confirmar a disponibilidade e os detalhes da sua estadia.</p>
 
-            <form action="enviar_reserva.php" method="POST">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label for="name">Nome Completo *</label>
-                  <input type="text" id="name" name="nome_completo" class="form-control" placeholder="O seu nome"
-                    required>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="phone">Telemóvel *</label>
-                  <input type="tel" id="phone" name="telemovel" class="form-control" placeholder="(+351) 900 000 000"
-                    required>
-                </div>
-              </div>
+            <form action="https://api.web3forms.com/submit" method="POST">
+              
+          <input type="hidden" name="access_key" value="ad0f5479-115c-4b1e-81a7-a048a99dfa87">
+          <input type="hidden" name="subject" value="Nova Reserva - Casa de Cantoneiros">
+          <input type="hidden" name="from_name" value="Casa de Cantoneiros (Website)">
+          <input type="hidden" name="redirect" value="https://casacantoneiros.pt/">
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="name">Nome Completo *</label>
+            <input type="text" id="name" name="nome_completo" class="form-control" placeholder="O seu nome" required>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="phone">Telemóvel *</label>
+            <input type="tel" id="phone" name="telemovel" class="form-control" placeholder="(+351) 900 000 000" required>
+        </div>
+    </div>
 
               <div class="row">
                 <div class="col-md-12 form-group">

@@ -54,8 +54,8 @@
 
 
   </section>
-  <!-- END section -->
 
+  <!-- Formulário de Contacto -->
   <section class="section contact-section" id="next">
     <div class="container">
       <div class="row">
@@ -66,15 +66,22 @@
             <p class="section-description">Tem alguma dúvida ou questão especial? Preencha o formulário abaixo e
               responderemos o mais breve possível.</p>
 
-            <form action="enviar_contacto.php" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST">
+              
+              <!-- CHAVES DO WEB3FORMS -->
+              <input type="hidden" name="access_key" value="ad0f5479-115c-4b1e-81a7-a048a99dfa87">
+              <input type="hidden" name="subject" value="Nova Mensagem de Contacto - Casa de Cantoneiros">
+              <input type="hidden" name="from_name" value="Casa de Cantoneiros (Contacto)">
+              <input type="hidden" name="redirect" value="https://casacantoneiros.pt/">
+
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="name">Nome *</label>
-                  <input type="text" id="name" name="nome" class="form-control" placeholder="O seu nome" required>
+                  <input type="text" id="name" name="Nome" class="form-control" placeholder="O seu nome" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="email">Email *</label>
-                  <input type="email" id="email" name="email" class="form-control" placeholder="o.seu@email.com"
+                  <input type="email" id="email" name="Email" class="form-control" placeholder="o.seu@email.com"
                     required>
                 </div>
               </div>
@@ -82,7 +89,7 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="subject">Assunto *</label>
-                  <select id="subject" name="assunto" class="form-control" required>
+                  <select id="subject" name="Assunto" class="form-control" required>
                     <option>Informação Geral</option>
                     <option>Reservas</option>
                     <option>Eventos</option>
