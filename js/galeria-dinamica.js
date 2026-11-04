@@ -75,7 +75,7 @@ function criarHtmlImagem(item) {
     <div class="col-6 col-md-4 col-lg-3 mb-4 filter-item ${categoria}" data-category="${categoria}">
       <a href="${url}" class="gallery-item" data-fancybox="gallery">
         <div class="gallery-overlay"><i class="fa fa-search-plus"></i></div>
-        <img src="${url}" sizes="(max-width: 575px) 50vw, (max-width: 991px) 50vw, (max-width: 1199px) 33vw, 25vw" loading="lazy" alt="${alt}" class="img-fluid">
+        <img src="${url}" sizes="(max-width: 575px) 50vw, (max-width: 991px) 50vw, (max-width: 1199px) 33vw, 25vw" loading="lazy" decoding="async" alt="${alt}" class="img-fluid">
       </a>
     </div>`;
 }
@@ -123,7 +123,7 @@ function renderizarPreviewGaleria() {
     preview.insertAdjacentHTML('beforeend', `
       <div class="col-6 col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${delay}">
         <a href="${url}" data-fancybox="gallery" class="gallery-item">
-          <img src="${url}" alt="${alt}" class="img-fluid rounded shadow-sm" loading="lazy">
+          <img src="${url}" alt="${alt}" class="img-fluid rounded shadow-sm" loading="lazy" decoding="async">
         </a>
       </div>`);
   });

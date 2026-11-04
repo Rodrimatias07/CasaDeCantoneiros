@@ -609,32 +609,6 @@ iframe {
   color: var(--color-ink) !important;
 }
 
-.booking-bar-wrapper {
-  margin-top: 34px;
-  max-width: 1040px;
-  padding: 0;
-}
-
-.booking-bar-intro {
-  margin-bottom: 14px !important;
-}
-
-.booking-bar-intro span {
-  background: rgba(250, 247, 241, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 6px;
-  color: rgba(255, 255, 255, 0.88) !important;
-  padding: 9px 14px;
-}
-
-.booking-bar {
-  background: rgba(250, 247, 241, 0.96) !important;
-  border: 1px solid rgba(255, 255, 255, 0.58) !important;
-  border-radius: 8px !important;
-  box-shadow: var(--shadow-soft) !important;
-  padding: 14px !important;
-}
-
 .booking-bar > .row {
   display: grid !important;
   grid-template-columns: minmax(0, 1.18fr) minmax(0, 1.18fr) minmax(96px, 0.68fr) minmax(104px, 0.72fr) minmax(176px, auto);
@@ -649,14 +623,6 @@ iframe {
   width: auto !important;
 }
 
-.booking-field {
-  border-right: 1px solid var(--color-line);
-}
-
-.booking-field:last-child {
-  border-right: 0;
-}
-
 .booking-bar .form-group {
   border-radius: 6px;
   min-height: 78px;
@@ -665,30 +631,6 @@ iframe {
 
 .booking-bar .form-group:hover {
   background: rgba(95, 115, 93, 0.08);
-}
-
-.booking-bar label {
-  color: var(--color-sage) !important;
-  font-size: 11px !important;
-  letter-spacing: 0.08em !important;
-  margin-bottom: 8px !important;
-}
-
-.booking-bar .form-control-minimal,
-.form-control-minimal {
-  color: var(--color-ink) !important;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-.booking-bar input.form-control-minimal::placeholder {
-  color: #8d9388;
-}
-
-.booking-bar .form-control-minimal option {
-  background: #fff;
-  color: var(--color-ink);
 }
 
 .booking-bar .btn-gold {
@@ -1191,11 +1133,6 @@ textarea.form-control {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(96px, 0.65fr) minmax(104px, 0.65fr);
   }
 
-  .booking-field:last-child {
-    border-top: 1px solid var(--color-line);
-    grid-column: 1 / -1;
-  }
-
   .booking-bar .btn-gold {
     min-height: 56px;
   }
@@ -1325,10 +1262,6 @@ textarea.form-control {
     display: flex;
   }
 
-  .booking-bar-wrapper {
-    display: none;
-  }
-
   .site-hero::after {
     height: 58px;
   }
@@ -1449,17 +1382,6 @@ textarea.form-control {
 
   .rooms-grid > [class*="col-"] .room-content h3 {
     font-size: 19px !important;
-  }
-
-  #google-reviews {
-    margin-left: -6px;
-    margin-right: -6px;
-  }
-
-  #google-reviews > [class*="col-"] {
-    margin-bottom: 12px !important;
-    padding-left: 6px;
-    padding-right: 6px;
   }
 
   .testimonial-card {
@@ -2324,4 +2246,18 @@ textarea.form-control {
     overflow-wrap: break-word;
     text-wrap: balance;
   }
+}
+
+/* Contact links inherit the surrounding text style so the layout stays unchanged. */
+.contact-link,
+.contact-link:link,
+.contact-link:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+  color: inherit;
+  text-decoration: underline;
 }

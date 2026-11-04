@@ -53,8 +53,6 @@
 
       // Initialize independent components (those not in header/footer)
       this.initAOS();
-      this.initHomeSlider();
-      this.initCarousels();
       this.initStellar();
       this.initSmoothScroll();
       this.initDatePickers();
@@ -137,69 +135,6 @@
     },
 
     /**
-     * Initialize the main home slider (requires carrossel.js)
-     */
-    initHomeSlider: function () {
-      $('.home-slider').owlCarousel({
-        loop: true,
-        autoplay: true,
-        margin: 10,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        nav: true,
-        autoplayHoverPause: true,
-        items: 1,
-        autoheight: true,
-        navText: ["<span class='ion-chevron-left'></span>", "<span class='ion-chevron-right'></span>"],
-        responsive: {
-          0: { items: 1, nav: false },
-          600: { items: 1, nav: false },
-          1000: { items: 1, nav: true }
-        }
-      });
-    },
-
-    /**
-     * Initialize other carousels used in the application
-     */
-    initCarousels: function () {
-      $('.js-carousel-1').owlCarousel({
-        loop: true,
-        autoplay: true,
-        stagePadding: 7,
-        margin: 20,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        nav: true,
-        autoplayHoverPause: true,
-        items: 3,
-        navText: ["<span class='ion-chevron-left'></span>", "<span class='ion-chevron-right'></span>"],
-        responsive: {
-          0: { items: 1, nav: false },
-          600: { items: 2, nav: false },
-          1000: { items: 3, nav: true, loop: false }
-        }
-      });
-
-      $('.js-carousel-2').owlCarousel({
-        loop: true,
-        autoplay: true,
-        stagePadding: 7,
-        margin: 20,
-        nav: true,
-        autoplayHoverPause: true,
-        autoHeight: true,
-        items: 3,
-        navText: ["<span class='ion-chevron-left'></span>", "<span class='ion-chevron-right'></span>"],
-        responsive: {
-          0: { items: 1, nav: false },
-          600: { items: 2, nav: false },
-          1000: { items: 3, dots: true, nav: true, loop: false }
-        }
-      });
-    },
-
-    /**
      * Initialize Parallax effects (requires parallax.js)
      */
     initStellar: function () {
@@ -235,26 +170,32 @@
     },
 
     /**
-     * Initialize Date/Time pickers (requires calendario.js / relogio.js) with Portuguese localization settings if needed
+     * Initialize the reservation datepickers (requires calendario.js) with Portuguese localization.
      */
     initDatePickers: function () {
-      if ($.fn.datepicker) {
-        $('#m_date').datepicker({
-          'format': 'dd/mm/yyyy',
-          'startDate': new Date(),
-          'autoclose': true
-        });
-        $('#checkin_date, #checkout_date').filter(function () {
-          return this.type !== 'date';
-        }).datepicker({
-          'format': 'dd/mm/yyyy',
-          'startDate': new Date(),
-          'autoclose': true
-        });
+      if (!$.fn.datepicker) return;
+
+      if ($.fn.datepicker.dates && !$.fn.datepicker.dates.pt) {
+        $.fn.datepicker.dates.pt = {
+          days: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+          daysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+          daysMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+          months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+          monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+          today: 'Hoje',
+          clear: 'Limpar',
+          weekStart: 1
+        };
       }
-      if ($.fn.timepicker) {
-        $('#m_time').timepicker();
-      }
+
+      $('#checkin_date, #checkout_date').filter(function () {
+        return this.type !== 'date';
+      }).datepicker({
+        'format': 'dd/mm/yyyy',
+        'language': 'pt',
+        'startDate': new Date(),
+        'autoclose': true
+      });
     },
 
     /**
@@ -305,7 +246,7 @@
      * The original select remains synced for form submission.
      */
     initReservationSelectPickers: function () {
-      const selects = document.querySelectorAll('form[action="enviar_reserva.php"] select#adults, form[action="enviar_reserva.php"] select#children');
+      const selects = document.querySelectorAll('#reservation-form select#adults, #reservation-form select#children');
       if (!selects.length) return;
 
       const closeAll = function (exceptPicker) {
@@ -456,7 +397,7 @@
      * Enforce reservation date rules in Portuguese display format.
      */
     initReservationDateValidation: function () {
-      const form = document.querySelector('form[action="enviar_reserva.php"]');
+      const form = document.querySelector('#reservation-form');
       const checkin = form ? form.querySelector('#checkin_date') : null;
       const checkout = form ? form.querySelector('#checkout_date') : null;
       const dateInputs = [checkin, checkout].filter(Boolean);
@@ -567,7 +508,6 @@
         input.setAttribute('placeholder', 'DD/MM/AAAA');
         input.setAttribute('pattern', '\\d{2}/\\d{2}/\\d{4}');
         input.setAttribute('autocomplete', 'off');
-        input.readOnly = true;
         input.min = todayValue;
 
         setDatepickerStart(input, today);

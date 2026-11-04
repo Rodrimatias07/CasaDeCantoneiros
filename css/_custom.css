@@ -476,41 +476,6 @@ textarea.form-control {
     }
 }
 
-/* Responsive hardening: keep the finished desktop design intact while making
-   the same sections breathe properly on tablets and phones. */
-img,
-video,
-iframe {
-    max-width: 100%;
-}
-
-/* Premium booking bar polish */
-.booking-bar-wrapper {
-    max-width: 1080px;
-    margin-top: 34px;
-}
-
-.booking-bar-intro {
-    margin-bottom: 20px !important;
-}
-
-.booking-bar-intro span {
-    background: rgba(12, 16, 22, 0.42);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.82) !important;
-    padding: 8px 18px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.booking-bar {
-    background: linear-gradient(180deg, rgba(13, 17, 23, 0.96), rgba(9, 12, 18, 0.94)) !important;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
-    border-radius: 30px !important;
-    box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-    padding: 22px !important;
-}
-
 .booking-bar > .row {
     min-height: 100px;
 }
@@ -543,36 +508,6 @@ iframe {
     background: rgba(255, 255, 255, 0.045);
 }
 
-.booking-bar label {
-    color: rgba(255, 255, 255, 0.62) !important;
-    font-size: 10px !important;
-    letter-spacing: 0.18em !important;
-    line-height: 1.2;
-    margin-bottom: 12px !important;
-}
-
-.booking-bar .form-control-minimal,
-.form-control-minimal {
-    color: #fff !important;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.15;
-}
-
-.booking-bar input.form-control-minimal::placeholder {
-    color: rgba(255, 255, 255, 0.46);
-    opacity: 1;
-}
-
-.booking-bar .border-right {
-    border-right-color: rgba(255, 255, 255, 0.11) !important;
-}
-
-.booking-bar .col-md-2 {
-    padding-left: 24px !important;
-    padding-right: 8px !important;
-}
-
 .booking-bar .btn-gold {
     width: 100%;
     min-width: 178px;
@@ -588,14 +523,6 @@ iframe {
     letter-spacing: 0.04em !important;
     line-height: 1.1;
     white-space: nowrap;
-}
-
-.guest-native-select {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
 }
 
 .guest-picker {
@@ -633,10 +560,6 @@ iframe {
 
 .guest-picker.is-empty .guest-picker-value {
     color: rgba(255, 255, 255, 0.46);
-}
-
-.guest-picker-arrow {
-    display: none;
 }
 
 .guest-picker-menu {
@@ -848,26 +771,6 @@ iframe {
         margin-bottom: 28px !important;
     }
 
-    .booking-bar-wrapper {
-        width: min(100%, 620px);
-        padding-top: 0;
-    }
-
-    .booking-bar-intro {
-        margin-bottom: 14px !important;
-    }
-
-    .booking-bar-intro span {
-        max-width: 100%;
-        white-space: normal;
-        line-height: 1.35;
-    }
-
-    .booking-bar {
-        border-radius: 24px !important;
-        padding: 12px !important;
-    }
-
     .booking-bar > .row {
         min-height: 0;
     }
@@ -875,19 +778,6 @@ iframe {
     .booking-bar .form-group {
         min-height: 0;
         padding: 14px 16px !important;
-    }
-
-    .booking-bar .form-control-minimal,
-    .form-control-minimal {
-        width: 100%;
-        min-width: 0;
-        font-size: 16px;
-        line-height: 1.35;
-    }
-
-    .booking-bar .col-md-2 {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
     }
 
     .booking-bar .btn-gold {
@@ -950,9 +840,6 @@ iframe {
         padding: 64px 0 28px;
     }
 
-    .footer-section .pl-md-5 {
-        padding-left: 15px !important;
-    }
 }
 
 @media (max-width: 575.98px) {
@@ -977,10 +864,6 @@ iframe {
         margin-bottom: 22px !important;
     }
 
-    .booking-bar {
-        padding: 10px !important;
-    }
-
     .booking-bar .row.no-gutters > [class*="col-"] {
         flex: 0 0 100%;
         max-width: 100%;
@@ -989,11 +872,6 @@ iframe {
     .booking-bar .col-md-4 .row.no-gutters > .col-6 {
         flex: 0 0 50%;
         max-width: 50%;
-    }
-
-    .booking-bar .border-right {
-        border-right: none !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .booking-bar .col-md-4 .col-6:first-child {
@@ -1041,14 +919,6 @@ iframe {
 
     .gallery-filters {
         gap: 8px;
-    }
-
-    .gallery-filter-btn {
-        flex: 1 1 calc(50% - 8px);
-        min-width: 0 !important;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 11px;
     }
 
     .info-card,

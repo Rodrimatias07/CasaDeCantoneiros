@@ -12,12 +12,13 @@
   <meta name="description" content="Conheça a história da Casa de Cantoneiros, um alojamento de turismo rural nascido nos anos 40 e restaurado para lhe oferecer um refúgio único de tranquilidade." />
   <meta name="keywords" content="" />
   <meta name="author" content="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" type="text/css"
-    href="[https://fonts.googleapis.com/css?family=Roboto:400,700](https://fonts.googleapis.com/css?family=Roboto:400,700)|Playfair+Display:400,700">
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Roboto:wght@400;700&amp;display=swap">
+  <link rel="preload" as="image" href="images/assets-site/fachada-casa.jpg" fetchpriority="high">
 
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/carrossel.css">
   <link rel="stylesheet" href="css/animacoes.css">
   <link rel="stylesheet" href="css/popup.css">
 
@@ -58,8 +59,8 @@
       <div class="row align-items-center mb-5">
         <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-up">
           <div class="image-overlap-wrapper">
-            <img src="images/assets-site/fachada-casa.jpg" alt="Casa Exterior" class="img-fluid img-main">
-            <img src="images/galeria/interior/quarto.jpg" alt="Casa Interior" class="img-fluid img-sub">
+            <img src="images/assets-site/fachada-casa.jpg" alt="Casa Exterior" class="img-fluid img-main" loading="lazy" decoding="async" width="1920" height="1440">
+            <img src="images/galeria/interior/quarto.jpg" alt="Casa Interior" class="img-fluid img-sub" loading="lazy" decoding="async" width="1216" height="913">
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -239,9 +240,6 @@
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/core.js"></script>
-  <script src="js/carrossel.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/popup.js"></script>
 

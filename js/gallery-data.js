@@ -26,7 +26,7 @@ window.galleryData = [
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/acesso-casa-cantoneiros.png",
+    "src": "images/galeria/exterior/acesso-casa-cantoneiros.jpg",
     "alt": "Acesso Casa Cantoneiros"
   },
   {
@@ -36,52 +36,52 @@ window.galleryData = [
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/churrasqueira-exterior.png",
+    "src": "images/galeria/exterior/churrasqueira-exterior.jpg",
     "alt": "Churrasqueira Exterior"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/corredor-entrada.png",
+    "src": "images/galeria/exterior/corredor-entrada.jpg",
     "alt": "Corredor Entrada"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/fachada-lateral.png",
+    "src": "images/galeria/exterior/fachada-lateral.jpg",
     "alt": "Fachada Lateral"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/IMG_3452.png",
+    "src": "images/galeria/exterior/IMG_3452.jpg",
     "alt": "IMG 3452"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/IMG_3468.png",
+    "src": "images/galeria/exterior/IMG_3468.jpg",
     "alt": "IMG 3468"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/IMG_3474.png",
+    "src": "images/galeria/exterior/IMG_3474.jpg",
     "alt": "IMG 3474"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/IMG_3503.png",
+    "src": "images/galeria/exterior/IMG_3503.jpg",
     "alt": "IMG 3503"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/IMG_4127.png",
+    "src": "images/galeria/exterior/IMG_4127.jpg",
     "alt": "IMG 4127"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/marco-casa-cantoneiros.png",
+    "src": "images/galeria/exterior/marco-casa-cantoneiros.jpg",
     "alt": "Marco Casa Cantoneiros"
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/portao-entrada.png",
+    "src": "images/galeria/exterior/portao-entrada.jpg",
     "alt": "Portao Entrada"
   },
   {
@@ -91,7 +91,7 @@ window.galleryData = [
   },
   {
     "category": "exterior",
-    "src": "images/galeria/exterior/zona-descanso-jardim.png",
+    "src": "images/galeria/exterior/zona-descanso-jardim.jpg",
     "alt": "Zona Descanso Jardim"
   },
   {
@@ -106,7 +106,7 @@ window.galleryData = [
   },
   {
     "category": "interior",
-    "src": "images/galeria/interior/detalhe-toalhas.png",
+    "src": "images/galeria/interior/detalhe-toalhas.jpg",
     "alt": "Detalhe Toalhas"
   },
   {
@@ -141,12 +141,12 @@ window.galleryData = [
   },
   {
     "category": "interior",
-    "src": "images/galeria/interior/janela-quarto.png",
+    "src": "images/galeria/interior/janela-quarto.jpg",
     "alt": "Janela Quarto"
   },
   {
     "category": "interior",
-    "src": "images/galeria/interior/quarto-parede-pedra.png",
+    "src": "images/galeria/interior/quarto-parede-pedra.jpg",
     "alt": "Quarto Parede Pedra"
   },
   {
