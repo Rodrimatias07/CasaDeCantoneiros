@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /components/
+
+Sitemap: https://www.casadecantoneiros.pt/sitemap.xml

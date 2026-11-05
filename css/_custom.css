@@ -21,7 +21,7 @@
 }
 
 .section-description {
-    color: #6c757d;
+    color: #5b636b;
     font-size: 16px;
     margin-bottom: 30px;
 }
@@ -192,45 +192,169 @@ textarea.form-control {
 
 /* Price Simulator */
 .price-simulator-card {
-    background: #1a202c;
-    /* Dark navy */
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(150deg, #657a62 0%, #5f735d 48%, #52664f 100%);
     color: #fff;
-    padding: 30px;
-    border-radius: 12px;
+    padding: 28px 26px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
     text-align: center;
-    margin-top: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    box-shadow: var(--shadow-card, 0 14px 32px rgba(29, 39, 31, 0.08));
 }
 
-.simulator-title {
-    font-size: 22px;
+.price-simulator-card::before {
+    content: "";
+    position: absolute;
+    top: -58px;
+    right: -48px;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+.price-simulator-card::after {
+    content: "";
+    position: absolute;
+    left: 26px;
+    right: 26px;
+    top: 0;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    pointer-events: none;
+}
+
+.simulator-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.simulator-title i {
-    font-size: 24px;
+.simulator-icon i {
+    color: #fff;
+    font-size: 21px;
+}
+
+.simulator-title {
+    display: block;
+    color: #fff;
+    font-family: var(--font-display, "Playfair Display", Georgia, serif);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    margin-bottom: 14px;
 }
 
 .simulator-status {
-    font-size: 24px;
-    color: #c5a059;
+    color: #fff;
+    font-family: var(--font-display, "Playfair Display", Georgia, serif);
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 15px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.simulator-detail {
+    min-height: 20px;
+    max-width: 30ch;
+    margin: 0 auto 14px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.price-simulator-card.is-invalid {
+    border-color: rgba(255, 224, 168, 0.7);
+}
+
+.price-simulator-card.is-invalid .simulator-status {
+    color: #fff7e6;
+}
+
+.simulator-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 4px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.simulator-meta span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.simulator-meta i {
+    color: #fff;
+    font-size: 13px;
+    opacity: 0.85;
 }
 
 .simulator-disclaimer {
-    font-size: 11px;
-    color: #a0aec0;
-    margin-top: 20px;
+    margin: 12px 0 0;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.reservation-min-stay {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -6px 0 22px;
+    color: #5f735d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.reservation-min-stay i {
+    color: #657a62;
+    font-size: 14px;
+}
+
+.reservation-min-stay strong {
+    color: #18231b;
+}
+
+/* Gallery picture element (AVIF/WebP with JPEG fallback) */
+.gallery-item picture {
+    display: block;
+    width: 100%;
+}
+
+.gallery-item picture img {
+    display: block;
+}
+
+/* Responsive pictures keep the original layout boxes */
+.image-overlap-wrapper picture,
+.image-stack__item picture,
+.room-img picture {
+    display: block;
+    width: 100%;
 }
 
 .reservation-disclaimer {
     font-size: 13px;
-    color: #718096;
+    color: #5b6472;
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -247,6 +371,18 @@ textarea.form-control {
     .contact-form-container {
         padding-right: 0;
         margin-bottom: 50px;
+    }
+
+    .price-simulator-card {
+        padding: 24px 20px 20px;
+    }
+
+    .simulator-status {
+        font-size: 24px;
+    }
+
+    .simulator-meta {
+        font-size: 11px;
     }
 }
 

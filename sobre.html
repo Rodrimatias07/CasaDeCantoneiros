@@ -1,15 +1,27 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-PT">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Casa de Cantoneiros</title>
+  <title>Sobre Nós | Casa de Cantoneiros — Vieira do Minho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.casadecantoneiros.pt/sobre.html">
+  <meta property="og:title" content="Sobre Nós | Casa de Cantoneiros — Vieira do Minho">
+  <meta property="og:description" content="Conheça a história da Casa de Cantoneiros, um alojamento de turismo rural nascido nos anos 40 e restaurado para lhe oferecer um refúgio único de tranquilidade.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.casadecantoneiros.pt/sobre.html">
+  <meta property="og:image" content="https://www.casadecantoneiros.pt/images/og-share.jpg">
+  <meta property="og:locale" content="pt_PT">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#18231b">
-  <meta name="description" content="Conheça a história da Casa de Cantoneiros, um alojamento de turismo rural nascido nos anos 40 e restaurado para lhe oferecer um refúgio único de tranquilidade." />
+  <meta name="description" content="Conheça a história da Casa de Cantoneiros, um alojamento de turismo rural nascido nos anos 40 e restaurado para lhe oferecer um refúgio único de tranquilidade.">
   <meta name="keywords" content="" />
   <meta name="author" content="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +30,16 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Roboto:wght@400;700&amp;display=swap">
   <link rel="preload" as="image" href="images/assets-site/fachada-casa.jpg" fetchpriority="high">
 
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animacoes.css">
-  <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/layout.css?v=20261105-5">
+  <link rel="stylesheet" href="css/animacoes.css?v=20261105-5">
+  <link rel="stylesheet" href="css/popup.css?v=20261105-5">
 
-  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css?v=20261105-5">
 
   <!-- Theme Style -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/_custom.css">
-  <link rel="stylesheet" href="css/professional.css">
+  <link rel="stylesheet" href="css/style.css?v=20261105-5">
+  <link rel="stylesheet" href="css/_custom.css?v=20261105-5">
+  <link rel="stylesheet" href="css/professional.css?v=20261105-5">
 </head>
 
 <body>
@@ -36,6 +48,7 @@
   <!-- Header loaded dynamically by App.loadComponents() -->
   <!-- END head -->
 
+  <main id="conteudo">
   <section class="site-hero inner-page overlay" style="background-image: url(images/assets-site/fachada-casa.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="container">
@@ -59,8 +72,24 @@
       <div class="row align-items-center mb-5">
         <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-up">
           <div class="image-overlap-wrapper">
-            <img src="images/assets-site/fachada-casa.jpg" alt="Casa Exterior" class="img-fluid img-main" loading="lazy" decoding="async" width="1920" height="1440">
-            <img src="images/galeria/interior/quarto.jpg" alt="Casa Interior" class="img-fluid img-sub" loading="lazy" decoding="async" width="1216" height="913">
+            <picture>
+              <source type="image/avif"
+                srcset="images/assets-site/fachada-casa-480.avif 480w, images/assets-site/fachada-casa-960.avif 960w, images/assets-site/fachada-casa-1600.avif 1600w"
+                sizes="(max-width: 991px) 100vw, 50vw">
+              <source type="image/webp"
+                srcset="images/assets-site/fachada-casa-480.webp 480w, images/assets-site/fachada-casa-960.webp 960w, images/assets-site/fachada-casa-1600.webp 1600w"
+                sizes="(max-width: 991px) 100vw, 50vw">
+              <img src="images/assets-site/fachada-casa.jpg" alt="Casa Exterior" class="img-fluid img-main" loading="lazy" decoding="async" width="1920" height="1440">
+            </picture>
+            <picture>
+              <source type="image/avif"
+                srcset="images/galeria/interior/quarto-480.avif 480w, images/galeria/interior/quarto-960.avif 960w, images/galeria/interior/quarto-1216.avif 1216w"
+                sizes="(max-width: 991px) 45vw, 25vw">
+              <source type="image/webp"
+                srcset="images/galeria/interior/quarto-480.webp 480w, images/galeria/interior/quarto-960.webp 960w, images/galeria/interior/quarto-1216.webp 1216w"
+                sizes="(max-width: 991px) 45vw, 25vw">
+              <img src="images/galeria/interior/quarto.jpg" alt="Casa Interior" class="img-fluid img-sub" loading="lazy" decoding="async" width="1216" height="913">
+            </picture>
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -202,53 +231,41 @@
         <div class="tarifa-card baixa">
           <h3 class="tarifa-titulo">Época Baixa</h3>
           <p class="tarifa-meses">Outubro a Maio</p>
-          <p class="tarifa-preco">120€ <span>/ noite</span></p>
+          <p class="tarifa-preco"><span data-rate-value="low">130</span>€ <span>/ noite</span></p>
         </div>
         <div class="tarifa-card alta">
           <h3 class="tarifa-titulo">Época Alta</h3>
           <p class="tarifa-meses">Junho a Setembro</p>
-          <p class="tarifa-preco">150€ <span>/ noite</span></p>
+          <p class="tarifa-preco"><span data-rate-value="high">150</span>€ <span>/ noite</span></p>
         </div>
         <div class="tarifa-card promocao">
           <div class="promo-content">
             <h3 class="tarifa-titulo destaque">Promoção Especial</h3>
-            <p class="tarifa-meses">Estadias de 1 semana (ou mais)</p>
-            <p class="tarifa-preco tarifa-preco-promo">10% <span>desconto</span></p>
+            <p class="tarifa-meses">Estadias de <span data-discount-from-nights>7</span> noites (ou mais)</p>
+            <p class="tarifa-preco tarifa-preco-promo"><span data-rate-discount>10%</span> <span>desconto</span></p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SEÇÃO RESERVA - COMENTADA -->
-  <!-- <section class="section bg-image overlay" style="background-image: url('images/assets-site/fachada-casa.jpg');"
-    id="section-reserva">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
-          <h2 class="text-white font-weight-bold">Um melhor lugar para ficar. Reserve agora!</h2>
-        </div>
-        <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
-          <a href="reservas.html" class="btn btn-outline-white-primary py-3 text-white px-5">Reserve Agora</a>
-        </div>
-      </div>
-    </div>
-  </section> -->
+  </main>
 
   <div id="rodape-container"></div>
   <!-- Footer loaded dynamically by App.loadComponents() -->
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/parallax.js"></script>
-  <script src="js/popup.js"></script>
+  <script src="js/jquery-3.3.1.min.js?v=20261105-5"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js?v=20261105-5"></script>
+  <script src="js/parallax.js?v=20261105-5"></script>
+  <script src="js/popup.js?v=20261105-5"></script>
 
 
-  <script src="js/animacoes.js"></script> 
+  <script src="js/animacoes.js?v=20261105-5"></script> 
 
 
 
-  <script src="js/app.js"></script>
+    <script src="js/site-config.js?v=20261105-5"></script>
+  <script src="js/app.js?v=20261105-5"></script>
 
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-modal="false"
     aria-labelledby="cookie-banner-title" aria-hidden="true">

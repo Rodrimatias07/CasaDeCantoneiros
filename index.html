@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-PT">
 
 <head>
   <meta charset="UTF-8">
@@ -19,9 +19,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Casa de Cantoneiros — turismo rural em Vieira do Minho">
   <meta property="og:locale" content="pt_PT">
+  <link rel="canonical" href="https://www.casadecantoneiros.pt/">
 
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#18231b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,16 +34,63 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Roboto:wght@400;700&amp;display=swap">
   <link rel="preload" as="image" href="images/assets-site/fachada-casa.jpg" fetchpriority="high">
 
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animacoes.css">
-  <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/layout.css?v=20261105-5">
+  <link rel="stylesheet" href="css/animacoes.css?v=20261105-5">
+  <link rel="stylesheet" href="css/popup.css?v=20261105-5">
 
-  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css?v=20261105-5">
  
   <!-- Theme Style -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/_custom.css">
-  <link rel="stylesheet" href="css/professional.css">
+  <link rel="stylesheet" href="css/style.css?v=20261105-5">
+  <link rel="stylesheet" href="css/_custom.css?v=20261105-5">
+  <link rel="stylesheet" href="css/professional.css?v=20261105-5">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Casa de Cantoneiros",
+      "description": "Alojamento de turismo rural numa antiga casa de cantoneiros restaurada, em Campos Ruivães, Vieira do Minho, no coração do Gerês.",
+      "url": "https://www.casadecantoneiros.pt/",
+      "logo": "https://www.casadecantoneiros.pt/android-chrome-512x512.png",
+      "image": [
+        "https://www.casadecantoneiros.pt/images/assets-site/fachada-casa.jpg",
+        "https://www.casadecantoneiros.pt/images/galeria/interior/quarto.jpg",
+        "https://www.casadecantoneiros.pt/images/galeria/exterior/zona-descanso-jardim.jpg"
+      ],
+      "telephone": "+351965507158",
+      "email": "geral@casadecantoneiros.pt",
+      "priceRange": "€130 - €150 por noite",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Transferência bancária, MB Way",
+      "checkinTime": "15:00",
+      "checkoutTime": "11:00",
+      "petsAllowed": true,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida de São Martinho 5624",
+        "addressLocality": "Campos Ruivães",
+        "addressRegion": "Vieira do Minho",
+        "addressCountry": "PT"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Vieira do Minho, Gerês"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/1EJzVk5QZy/",
+        "https://www.instagram.com/casa.de.cantoneiros"
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Estacionamento privado gratuito", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Jardim privado", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Lareira", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Cozinha equipada", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Animais de estimação permitidos", "value": true }
+      ]
+    }
+  </script>
 </head>
 
 <body>
@@ -47,6 +99,7 @@
   <!-- Header loaded dynamically by App.loadComponents() -->
   <!-- END head -->
 
+  <main id="conteudo">
   <section class="site-hero overlay" style="background-image: url(images/assets-site/fachada-casa.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="container">
@@ -79,11 +132,16 @@
       <div class="row align-items-center">
         <div class="col-md-12 col-lg-6 mb-5" data-aos="fade-up">
           <div class="image-stack">
-            <!-- <div class="image-stack__item image-stack__item--top">
-              <img src="images/galeria/interior/quarto-1.jpg" alt="Casa de Cantoneiros" class="img-fluid rounded shadow">
-            </div> -->
             <div class="image-stack__item image-stack__item--bottom">
-              <img src="images/assets-site/amostra-quarto.jpg" alt="Tradição" class="img-fluid rounded shadow" loading="lazy" decoding="async" width="685" height="913">
+              <picture>
+                <source type="image/avif"
+                  srcset="images/assets-site/amostra-quarto-480.avif 480w, images/assets-site/amostra-quarto-685.avif 685w"
+                  sizes="(max-width: 991px) 100vw, 50vw">
+                <source type="image/webp"
+                  srcset="images/assets-site/amostra-quarto-480.webp 480w, images/assets-site/amostra-quarto-685.webp 685w"
+                  sizes="(max-width: 991px) 100vw, 50vw">
+                <img src="images/assets-site/amostra-quarto.jpg" alt="Tradição" class="img-fluid rounded shadow" loading="lazy" decoding="async" width="685" height="913">
+              </picture>
             </div>
           </div>
         </div>
@@ -211,7 +269,15 @@
         <div class="col-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="room-card">
             <div class="room-img">
-              <img src="images/galeria/interior/quarto.jpg" alt="Quarto Principal" class="img-fluid" loading="lazy" decoding="async" width="1216" height="913">
+              <picture>
+                <source type="image/avif"
+                  srcset="images/galeria/interior/quarto-480.avif 480w, images/galeria/interior/quarto-960.avif 960w, images/galeria/interior/quarto-1216.avif 1216w"
+                  sizes="(max-width: 991px) 50vw, 33vw">
+                <source type="image/webp"
+                  srcset="images/galeria/interior/quarto-480.webp 480w, images/galeria/interior/quarto-960.webp 960w, images/galeria/interior/quarto-1216.webp 1216w"
+                  sizes="(max-width: 991px) 50vw, 33vw">
+                <img src="images/galeria/interior/quarto.jpg" alt="Quarto Principal" class="img-fluid" loading="lazy" decoding="async" width="1216" height="913">
+              </picture>
             </div>
             <div class="room-content p-4 text-center">
               <h3 class="mb-3">Quarto Principal</h3>
@@ -224,7 +290,15 @@
         <div class="col-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="room-card">
             <div class="room-img">
-              <img src="images/galeria/interior/cozinha.jpg" alt="Cozinha Equipada" class="img-fluid" loading="lazy" decoding="async" width="1216" height="913">
+              <picture>
+                <source type="image/avif"
+                  srcset="images/galeria/interior/cozinha-480.avif 480w, images/galeria/interior/cozinha-960.avif 960w, images/galeria/interior/cozinha-1216.avif 1216w"
+                  sizes="(max-width: 991px) 50vw, 33vw">
+                <source type="image/webp"
+                  srcset="images/galeria/interior/cozinha-480.webp 480w, images/galeria/interior/cozinha-960.webp 960w, images/galeria/interior/cozinha-1216.webp 1216w"
+                  sizes="(max-width: 991px) 50vw, 33vw">
+                <img src="images/galeria/interior/cozinha.jpg" alt="Cozinha Equipada" class="img-fluid" loading="lazy" decoding="async" width="1216" height="913">
+              </picture>
             </div>
             <div class="room-content p-4 text-center">
               <h3 class="mb-3">Cozinha Equipada</h3>
@@ -238,7 +312,15 @@
         <div class="col-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="room-card">
             <div class="room-img">
-              <img src="images/galeria/interior/casa-de-banho.jpg" alt="Casa de Banho" class="img-fluid" loading="lazy" decoding="async" width="1216" height="913">
+              <picture>
+                <source type="image/avif"
+                  srcset="images/galeria/interior/casa-de-banho-480.avif 480w, images/galeria/interior/casa-de-banho-960.avif 960w, images/galeria/interior/casa-de-banho-1216.avif 1216w"
+                  sizes="(max-width: 991px) 50vw, 33vw">
+                <source type="image/webp"
+                  srcset="images/galeria/interior/casa-de-banho-480.webp 480w, images/galeria/interior/casa-de-banho-960.webp 960w, images/galeria/interior/casa-de-banho-1216.webp 1216w"
+                  sizes="(max-width: 991px) 50vw, 33vw">
+                <img src="images/galeria/interior/casa-de-banho.jpg" alt="Casa de Banho" class="img-fluid" loading="lazy" decoding="async" width="1216" height="913">
+              </picture>
             </div>
             <div class="room-content p-4 text-center">
               <h3 class="mb-3">Casa de Banho</h3>
@@ -262,18 +344,18 @@
         <div class="tarifa-card baixa">
           <h3 class="tarifa-titulo">Época Baixa</h3>
           <p class="tarifa-meses">Outubro a Maio</p>
-          <p class="tarifa-preco">130€ <span>/ noite</span></p>
+          <p class="tarifa-preco"><span data-rate-value="low">130</span>€ <span>/ noite</span></p>
         </div>
         <div class="tarifa-card alta">
           <h3 class="tarifa-titulo">Época Alta</h3>
           <p class="tarifa-meses">Junho a Setembro</p>
-          <p class="tarifa-preco">150€ <span>/ noite</span></p>
+          <p class="tarifa-preco"><span data-rate-value="high">150</span>€ <span>/ noite</span></p>
         </div>
         <div class="tarifa-card promocao">
           <div class="promo-content">
             <h3 class="tarifa-titulo destaque">Promoção Especial</h3>
-            <p class="tarifa-meses">Estadias de 1 semana (ou mais)</p>
-            <p class="tarifa-preco tarifa-preco-promo">10% <span>desconto</span></p>
+            <p class="tarifa-meses">Estadias de <span data-discount-from-nights>7</span> noites (ou mais)</p>
+            <p class="tarifa-preco tarifa-preco-promo"><span data-rate-discount>10%</span> <span>desconto</span></p>
           </div>
         </div>
       </div>
@@ -301,54 +383,25 @@
     </div>
   </section>
 
-<!-- Testemunhos -->
- <!--
-  <section class="section bg-light">
-    <div class="container">
-      <div class="row justify-content-center text-center mb-5">
-        <div class="col-md-8" data-aos="fade-up">
-          <span class="text-gold text-uppercase font-weight-bold mb-3 d-block"
-            style="letter-spacing: 2px;">Testemunhos</span>
-          <h2 class="heading mb-4">O Que os Nossos Hóspedes Dizem</h2>
-          <p class="text-muted">Estas são as avaliações reais deixadas no Google Maps sobre a Casa de Cantoneiros.</p>
-        </div>
-      </div>
-
-      <div id="google-reviews-container"></div>
-    </div>
-  </section>
-  -->
-
-  <!-- SEÇÃO RESERVA -->
-  <!-- <section class="section bg-image overlay" style="background-image: url('images/assets-site/fachada-casa.jpg');">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
-          <h2 class="text-white font-weight-bold">Um melhor lugar para ficar. Reserve agora!</h2>
-        </div>
-        <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
-          <a href="reservas.html" class="btn btn-outline-white-primary py-3 text-white px-5">Reserve Agora</a>
-        </div>
-      </div>
-    </div>
-  </section> -->
+  </main>
 
   <div id="rodape-container"></div>
   <!-- Footer loaded dynamically by App.loadComponents() -->
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/parallax.js"></script>
-  <script src="js/popup.js"></script>
+  <script src="js/jquery-3.3.1.min.js?v=20261105-5"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js?v=20261105-5"></script>
+  <script src="js/parallax.js?v=20261105-5"></script>
+  <script src="js/popup.js?v=20261105-5"></script>
 
-  <script src="js/animacoes.js"></script>
+  <script src="js/animacoes.js?v=20261105-5"></script>
 
-  <script src="js/gallery-data.js?v=6"></script>
-  <script src="js/galeria-dinamica.js?v=6"></script>
+  <script src="js/gallery-data.js?v=20261105-5"></script>
+  <script src="js/galeria-dinamica.js?v=20261105-5"></script>
 
 
 
-  <script src="js/app.js"></script>
+    <script src="js/site-config.js?v=20261105-5"></script>
+  <script src="js/app.js?v=20261105-5"></script>
 
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-modal="false"
     aria-labelledby="cookie-banner-title" aria-hidden="true">
@@ -407,7 +460,7 @@
       }
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_GOOGLE_REMOVIDA&libraries=places&callback=initGoogleReviews" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_GOOGLE_REMOVIDA&libraries=places&loading=async&callback=initGoogleReviews" async defer></script>
 </body>
 
 </html>

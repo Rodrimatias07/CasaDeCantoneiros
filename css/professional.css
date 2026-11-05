@@ -7,6 +7,7 @@
   --color-sage: #5f735d;
   --color-forest: #18231b;
   --color-gold: #b78b4a;
+  --color-gold-ink: #84602a;
   --color-clay: #9a684b;
   --font-body: "Roboto", Arial, sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
@@ -96,10 +97,23 @@ iframe {
   background: var(--color-forest) !important;
 }
 
-.section-subtitle,
 .custom-caption,
 .text-gold {
   color: var(--color-gold) !important;
+}
+
+.section-subtitle {
+  color: var(--color-gold-ink) !important;
+}
+
+.philosophy-section .section-subtitle,
+.bg-dark-premium .section-subtitle {
+  color: var(--color-gold) !important;
+}
+
+.section-subtitle,
+.custom-caption,
+.text-gold {
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 800;
@@ -169,7 +183,11 @@ iframe {
 }
 
 .tarifas-promocoes--light .tarifas-header .section-subtitle {
-  color: var(--color-muted) !important;
+  color: #5b636b !important;
+}
+
+.tarifas-promocoes--light .tarifas-eyebrow {
+  color: var(--color-gold-ink);
 }
 
 .tarifas-grid {
@@ -1382,48 +1400,6 @@ textarea.form-control {
 
   .rooms-grid > [class*="col-"] .room-content h3 {
     font-size: 19px !important;
-  }
-
-  .testimonial-card {
-    height: 100%;
-    padding: 18px 12px !important;
-  }
-
-  .testimonial-content {
-    font-size: 12px;
-    line-height: 1.45;
-    margin-bottom: 14px !important;
-  }
-
-  .quote-icon {
-    margin-bottom: 10px !important;
-  }
-
-  .testimonial-author {
-    align-items: flex-start !important;
-  }
-
-  .testimonial-author .fa-user-circle,
-  .author-img {
-    flex: 0 0 auto;
-  }
-
-  .testimonial-author h4 {
-    font-size: 13px;
-    line-height: 1.2;
-  }
-
-  .star-rating {
-    line-height: 1.1;
-  }
-
-  .star-rating .fa {
-    font-size: 10px;
-  }
-
-  .testimonial-author small {
-    font-size: 10px;
-    line-height: 1.2;
   }
 }
 

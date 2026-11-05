@@ -1,6 +1,28 @@
 (function ($) {
   'use strict';
 
+  /**
+   * Configuração central. O ficheiro js/site-config.js é carregado antes
+   * deste script; os valores abaixo são apenas uma salvaguarda.
+   */
+  const CONFIG = window.CasaConfig || {
+    version: '20261105-5',
+    reservation: {
+      minNights: 2,
+      maxNights: 60,
+      discount: 0.10,
+      discountFromNights: 7
+    },
+    rates: {
+      low: 130,
+      high: 150,
+      highSeasonMonths: [5, 6, 7, 8]
+    }
+  };
+
+  const ASSET_VERSION = CONFIG.version || '1';
+  const MIN_NIGHTS = Number(CONFIG.reservation && CONFIG.reservation.minNights) || 2;
+
   const App = {
     init: function () {
       this.renderComponents();
@@ -16,7 +38,7 @@
       const self = this;
 
       const loadHeader = new Promise((resolve, reject) => {
-        $('#cabecalho-container').load('components/cabecalho.html', function (response, status, xhr) {
+        $('#cabecalho-container').load('components/cabecalho.html?v=' + ASSET_VERSION, function (response, status, xhr) {
           if (status == "error") {
             console.error("Error loading header:", xhr.status, xhr.statusText);
             reject(xhr);
@@ -27,7 +49,7 @@
       });
 
       const loadFooter = new Promise((resolve, reject) => {
-        $('#rodape-container').load('components/rodape.html', function (response, status, xhr) {
+        $('#rodape-container').load('components/rodape.html?v=' + ASSET_VERSION, function (response, status, xhr) {
           if (status == "error") {
             console.error("Error loading footer:", xhr.status, xhr.statusText);
             reject(xhr);
@@ -57,9 +79,11 @@
       this.initSmoothScroll();
       this.initDatePickers();
       this.initGuestPickers();
+      this.initRateDisplay();
       this.initReservationPrefill();
       this.initReservationSelectPickers();
       this.initReservationDateValidation();
+      this.initPriceSimulator();
       this.initBookingFastForm();
       this.initCookieConsent();
     },
@@ -170,6 +194,36 @@
     },
 
     /**
+     * Keep every price shown on the site in sync with js/site-config.js.
+     * Elements opt in with data-rate-value="low|high", data-rate-discount,
+     * data-min-nights or data-discount-from-nights.
+     */
+    initRateDisplay: function () {
+      const rates = CONFIG.rates || {};
+      const reservation = CONFIG.reservation || {};
+      const discount = Math.round((Number(reservation.discount) || 0) * 100);
+
+      document.querySelectorAll('[data-rate-value]').forEach(function (element) {
+        const key = element.getAttribute('data-rate-value');
+        if (rates[key] !== undefined) {
+          element.textContent = String(rates[key]);
+        }
+      });
+
+      document.querySelectorAll('[data-rate-discount]').forEach(function (element) {
+        element.textContent = discount + '%';
+      });
+
+      document.querySelectorAll('[data-min-nights]').forEach(function (element) {
+        element.textContent = String(MIN_NIGHTS);
+      });
+
+      document.querySelectorAll('[data-discount-from-nights]').forEach(function (element) {
+        element.textContent = String(reservation.discountFromNights || 7);
+      });
+    },
+
+    /**
      * Initialize the reservation datepickers (requires calendario.js) with Portuguese localization.
      */
     initDatePickers: function () {
@@ -188,13 +242,23 @@
         };
       }
 
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const minimumCheckout = new Date(today.getTime());
+      minimumCheckout.setDate(minimumCheckout.getDate() + MIN_NIGHTS);
+
       $('#checkin_date, #checkout_date').filter(function () {
         return this.type !== 'date';
-      }).datepicker({
-        'format': 'dd/mm/yyyy',
-        'language': 'pt',
-        'startDate': new Date(),
-        'autoclose': true
+      }).each(function () {
+        const isCheckout = this.id === 'checkout_date';
+
+        $(this).datepicker({
+          'format': 'dd/mm/yyyy',
+          'language': 'pt',
+          'startDate': isCheckout ? minimumCheckout : today,
+          'autoclose': true
+        });
       });
     },
 
@@ -272,17 +336,25 @@
         select.classList.add('enhanced-select-native');
         select.tabIndex = -1;
 
+        const labelText = select.previousElementSibling
+          ? select.previousElementSibling.textContent.replace('*', '').trim()
+          : 'Selecionar opção';
+        const selectedText = select.options[select.selectedIndex]
+          ? select.options[select.selectedIndex].textContent
+          : '';
+
         picker.className = 'reservation-select-picker';
         toggle.type = 'button';
         toggle.className = 'reservation-select-toggle';
         toggle.setAttribute('aria-haspopup', 'listbox');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', select.previousElementSibling ? select.previousElementSibling.textContent.replace('*', '').trim() : 'Selecionar opção');
+        toggle.setAttribute('aria-label', selectedText + ' — ' + labelText);
 
         value.className = 'reservation-select-value';
         arrow.className = 'reservation-select-arrow';
         menu.className = 'reservation-select-menu';
         menu.setAttribute('role', 'listbox');
+        menu.setAttribute('aria-label', labelText);
 
         toggle.appendChild(value);
         toggle.appendChild(arrow);
@@ -291,7 +363,11 @@
         select.insertAdjacentElement('afterend', picker);
 
         const refresh = function () {
-          value.textContent = select.options[select.selectedIndex] ? select.options[select.selectedIndex].textContent : '';
+          const currentText = select.options[select.selectedIndex]
+            ? select.options[select.selectedIndex].textContent
+            : '';
+          value.textContent = currentText;
+          toggle.setAttribute('aria-label', currentText + ' — ' + labelText);
           menu.querySelectorAll('.reservation-select-option').forEach(function (button) {
             const isSelected = button.dataset.value === select.value;
             button.classList.toggle('is-selected', isSelected);
@@ -531,7 +607,7 @@
 
         const checkoutDate = parseDisplayDate(checkout.value);
         const checkinDate = parseDisplayDate(checkin ? checkin.value : '');
-        const minimumCheckout = checkinDate ? addDays(checkinDate, 1) : today;
+        const minimumCheckout = addDays(checkinDate || today, MIN_NIGHTS);
 
         if (checkout.value && (!checkoutDate || compareDates(checkoutDate, minimumCheckout) < 0)) {
           clearDatepickerField(checkout);
@@ -553,9 +629,9 @@
           return;
         }
 
-        const nextDay = checkinDate ? addDays(checkinDate, 1) : today;
-        checkout.min = formatIsoDate(nextDay);
-        setDatepickerStart(checkout, nextDay);
+        const minimumCheckout = addDays(checkinDate || today, MIN_NIGHTS);
+        checkout.min = formatIsoDate(minimumCheckout);
+        setDatepickerStart(checkout, minimumCheckout);
 
         clearInvalidCheckout();
       };
@@ -623,11 +699,15 @@
         }
 
         if (checkinDate && checkoutDate) {
-          const minimumCheckout = addDays(checkinDate, 1);
+          const minimumCheckout = addDays(checkinDate, MIN_NIGHTS);
 
           if (compareDates(checkoutDate, minimumCheckout) < 0) {
             event.preventDefault();
-            checkout.setCustomValidity('A data de sa\u00edda tem de ser pelo menos um dia depois da entrada.');
+            checkout.setCustomValidity(
+              'A estadia m\u00ednima \u00e9 de ' + MIN_NIGHTS +
+              ' noites. Escolha uma data de sa\u00edda pelo menos ' + MIN_NIGHTS +
+              ' dias depois da entrada.'
+            );
             checkout.reportValidity();
             return;
           }
@@ -636,6 +716,156 @@
         if (checkin) checkin.setCustomValidity('');
         if (checkout) checkout.setCustomValidity('');
       });
+    },
+
+    /**
+     * Automatic price simulator for the reservation page.
+     * Rates, minimum stay and discount are centralised in js/site-config.js.
+     */
+    initPriceSimulator: function () {
+      const card = document.getElementById('price-simulator');
+      const form = document.querySelector('#reservation-form');
+      if (!card || !form) return;
+
+      const checkin = form.querySelector('#checkin_date');
+      const checkout = form.querySelector('#checkout_date');
+      const status = card.querySelector('#simulator-status');
+      const detail = card.querySelector('#simulator-detail');
+      const hidden = form.querySelector('#price_estimate');
+
+      if (!checkin || !checkout || !status) return;
+
+      const RATES = CONFIG.rates || {
+        low: 130,
+        high: 150,
+        highSeasonMonths: [5, 6, 7, 8]
+      };
+      const RESERVATION = CONFIG.reservation || {};
+      const discountRate = Number(RESERVATION.discount) || 0;
+      const discountFromNights = Number(RESERVATION.discountFromNights) || 7;
+      const discountPercent = Math.round(discountRate * 100);
+
+      const euro = function (value) {
+        const hasCents = Math.round(value * 100) % 100 !== 0;
+        return new Intl.NumberFormat('pt-PT', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: hasCents ? 2 : 0,
+          maximumFractionDigits: 2
+        }).format(value);
+      };
+
+      const parseDate = function (value) {
+        if (!value) return null;
+
+        const match = value.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!match) return null;
+
+        const day = Number(match[1]);
+        const month = Number(match[2]);
+        const year = Number(match[3]);
+        const date = new Date(year, month - 1, day);
+
+        if (
+          date.getFullYear() !== year ||
+          date.getMonth() !== month - 1 ||
+          date.getDate() !== day
+        ) {
+          return null;
+        }
+
+        return date;
+      };
+
+      const countNights = function (start, end) {
+        return Math.round((end.getTime() - start.getTime()) / 86400000);
+      };
+
+      const isHighSeason = function (date) {
+        return RATES.highSeasonMonths.indexOf(date.getMonth()) !== -1;
+      };
+
+      const update = function () {
+        const start = parseDate(checkin.value);
+        const end = parseDate(checkout.value);
+
+        if (hidden) hidden.value = '';
+        card.classList.remove('is-invalid');
+
+        if (!start || !end) {
+          status.textContent = 'Selecione as datas';
+          if (detail) detail.textContent = '';
+          return;
+        }
+
+        const nights = countNights(start, end);
+
+        if (nights < MIN_NIGHTS) {
+          status.textContent = 'M\u00ednimo de ' + MIN_NIGHTS + ' noites';
+          if (detail) {
+            detail.textContent = nights > 0
+              ? 'A estadia selecionada tem ' + nights + (nights === 1 ? ' noite' : ' noites') +
+                '. Escolha pelo menos ' + MIN_NIGHTS + ' noites.'
+              : 'A sa\u00edda tem de ser posterior \u00e0 entrada.';
+          }
+          card.classList.add('is-invalid');
+          card.setAttribute('data-nights', String(Math.max(0, nights)));
+          return;
+        }
+
+        let total = 0;
+        let lowNights = 0;
+        let highNights = 0;
+
+        for (let i = 0; i < nights; i++) {
+          const night = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+          if (isHighSeason(night)) {
+            total += RATES.high;
+            highNights++;
+          } else {
+            total += RATES.low;
+            lowNights++;
+          }
+        }
+
+        const discount = nights >= discountFromNights ? total * discountRate : 0;
+        const finalTotal = total - discount;
+
+        status.textContent = nights + ' noites \u00b7 ' + euro(finalTotal);
+        card.setAttribute('data-nights', String(nights));
+
+        if (detail) {
+          const parts = [];
+          if (lowNights) {
+            parts.push(lowNights + (lowNights === 1 ? ' noite' : ' noites') + ' a ' + euro(RATES.low));
+          }
+          if (highNights) {
+            parts.push(highNights + (highNights === 1 ? ' noite' : ' noites') + ' a ' + euro(RATES.high));
+          }
+          if (discount > 0) {
+            parts.push('desconto de ' + discountPercent + '% (\u2212' + euro(discount) + ')');
+          }
+          detail.textContent = parts.join(' \u00b7 ');
+        }
+
+        if (hidden) hidden.value = finalTotal.toFixed(2);
+      };
+
+      ['change', 'input'].forEach(function (eventName) {
+        checkin.addEventListener(eventName, update);
+        checkout.addEventListener(eventName, update);
+      });
+
+      if ($.fn.datepicker) {
+        $(checkin).off('changeDate.priceSimulator').on('changeDate.priceSimulator', update);
+        $(checkout).off('changeDate.priceSimulator').on('changeDate.priceSimulator', update);
+      }
+
+      form.addEventListener('reset', function () {
+        window.setTimeout(update, 0);
+      });
+
+      update();
     },
 
 

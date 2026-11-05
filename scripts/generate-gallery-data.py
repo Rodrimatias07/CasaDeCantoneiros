@@ -1,13 +1,16 @@
 import json
-import os
 import re
 import unicodedata
 from pathlib import Path
 
+from PIL import Image
+
 VALID_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp', '.gif'}
+GENERATED_VARIANT = re.compile(r'-\d{3,4}$')
 ROOT_DIR = Path(__file__).resolve().parent.parent
 GALLERY_ROOT = ROOT_DIR / 'images' / 'galeria'
 OUTPUT_FILE = ROOT_DIR / 'js' / 'gallery-data.js'
+IMAGE_PUBLIC_ROOT = 'images/galeria'
 
 
 def to_title_case(text: str) -> str:
@@ -38,21 +41,47 @@ def get_category_folders() -> list[str]:
     )
 
 
-def get_images_from_category(category: str) -> list[dict[str, str]]:
+def build_variants(source: Path, extension: str) -> list[dict[str, object]]:
+    variants = []
+    for candidate in sorted(source.parent.glob(f'{source.stem}-*.{extension}')):
+        match = re.search(r'-(\d{3,4})$', candidate.stem)
+        if not match:
+            continue
+        variants.append({
+            'src': f'{IMAGE_PUBLIC_ROOT}/{source.parent.name}/{candidate.name}',
+            'width': int(match.group(1)),
+        })
+    return sorted(variants, key=lambda item: item['width'])
+
+
+def get_images_from_category(category: str) -> list[dict[str, object]]:
     category_path = GALLERY_ROOT / category
     category_slug = slugify(category)
     images = [
-        entry.name for entry in category_path.iterdir()
-        if entry.is_file() and entry.suffix.lower() in VALID_EXTENSIONS
+        entry for entry in category_path.iterdir()
+        if entry.is_file()
+        and entry.suffix.lower() in VALID_EXTENSIONS
+        and not GENERATED_VARIANT.search(entry.stem)
     ]
-    return [
-        {
+
+    result = []
+    for image in sorted(images, key=lambda entry: entry.name.casefold()):
+        with Image.open(image) as opened:
+            width, height = opened.size
+
+        result.append({
             'category': category_slug,
-            'src': f'images/galeria/{category}/{image}',
-            'alt': build_alt_text(image)
-        }
-        for image in sorted(images, key=lambda name: name.casefold())
-    ]
+            'src': f'{IMAGE_PUBLIC_ROOT}/{category}/{image.name}',
+            'alt': build_alt_text(image.name),
+            'width': width,
+            'height': height,
+            'variants': {
+                'avif': build_variants(image, 'avif'),
+                'webp': build_variants(image, 'webp'),
+            },
+        })
+
+    return result
 
 
 def main() -> None:
