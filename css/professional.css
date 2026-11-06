@@ -2237,3 +2237,60 @@ textarea.form-control {
   color: inherit;
   text-decoration: underline;
 }
+
+/* Mobile: the hero photo no longer runs straight into another photo. */
+@media (max-width: 767.98px) {
+  .intro-section#next {
+    padding-top: 72px !important;
+  }
+
+  .intro-section#next .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Text first, image after, with breathing room between both. */
+  .intro-section#next .row > [class*="col-"]:first-child {
+    margin: 28px 0 0 !important;
+    order: 2;
+  }
+
+  .intro-section#next .row > [class*="col-"]:last-child {
+    order: 1;
+  }
+
+  /* Sobre: a single clean image instead of two overlapping photos. */
+  .intro-section#next .image-overlap-wrapper {
+    padding-bottom: 0 !important;
+  }
+
+  .intro-section#next .image-overlap-wrapper .img-main {
+    display: none !important;
+  }
+
+  .intro-section#next .image-overlap-wrapper .img-sub {
+    aspect-ratio: 16 / 9;
+    border: 0;
+    box-shadow: var(--shadow-soft);
+    left: auto;
+    max-height: 220px;
+    object-fit: cover;
+    object-position: center 48%;
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* Gallery preview: a little more air between the photos. */
+  .gallery-preview-grid {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+
+  .gallery-preview-grid > [class*="col-"] {
+    margin-bottom: 16px !important;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
