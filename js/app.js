@@ -6,7 +6,7 @@
    * deste script; os valores abaixo são apenas uma salvaguarda.
    */
   const CONFIG = window.CasaConfig || {
-    version: '20261105-8',
+    version: '20261105-9',
     reservation: {
       minNights: 2,
       maxNights: 60,
@@ -83,6 +83,7 @@
       this.initReservationPrefill();
       this.initReservationSelectPickers();
       this.initReservationDateValidation();
+      this.initReservationLayout();
       this.initPriceSimulator();
       this.initBookingFastForm();
       this.initCookieConsent();
@@ -716,6 +717,44 @@
         if (checkin) checkin.setCustomValidity('');
         if (checkout) checkout.setCustomValidity('');
       });
+    },
+
+    /**
+     * Mobile-only: move the price simulator right below the date fields so the
+     * estimate is visible without a long scroll. Desktop keeps the sidebar order.
+     */
+    initReservationLayout: function () {
+      const card = document.getElementById('price-simulator');
+      const form = document.getElementById('reservation-form');
+      if (!card || !form) return;
+
+      const anchor = form.querySelector('.reservation-min-stay');
+      const sidebar = card.parentElement;
+      if (!anchor || !sidebar) return;
+
+      const media = window.matchMedia('(max-width: 767.98px)');
+
+      const place = function (isMobile) {
+        if (isMobile) {
+          if (anchor.nextElementSibling !== card) {
+            anchor.insertAdjacentElement('afterend', card);
+          }
+        } else if (card.parentElement !== sidebar) {
+          sidebar.appendChild(card);
+        }
+      };
+
+      place(media.matches);
+
+      const onChange = function (event) {
+        place(event.matches);
+      };
+
+      if (typeof media.addEventListener === 'function') {
+        media.addEventListener('change', onChange);
+      } else if (typeof media.addListener === 'function') {
+        media.addListener(onChange);
+      }
     },
 
     /**

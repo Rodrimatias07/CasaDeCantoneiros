@@ -377,6 +377,11 @@ textarea.form-control {
         padding: 24px 20px 20px;
     }
 
+    /* Simulator relocated into the form flow on mobile (see initReservationLayout). */
+    .contact-form-container .price-simulator-card {
+        margin: 0 0 24px;
+    }
+
     .simulator-status {
         font-size: 24px;
     }
