@@ -230,7 +230,7 @@ iframe {
   white-space: nowrap;
 }
 
-.tarifa-card.promocao .tarifa-preco span {
+.tarifa-card.promocao .tarifa-preco span:not([data-rate-value]):not([data-rate-discount]) {
   color: var(--color-muted);
   display: inline;
   font-family: var(--font-body);
@@ -269,7 +269,7 @@ iframe {
   white-space: nowrap;
 }
 
-.tarifa-preco span {
+.tarifa-preco span:not([data-rate-value]):not([data-rate-discount]) {
   color: var(--color-muted);
   font-family: var(--font-body);
   font-size: 14px;
@@ -327,7 +327,7 @@ iframe {
     text-align: right;
   }
 
-  .tarifa-card.promocao .tarifa-preco span {
+  .tarifa-card.promocao .tarifa-preco span:not([data-rate-value]):not([data-rate-discount]) {
     display: block;
     font-size: 11px;
     margin-left: 0;
@@ -348,7 +348,7 @@ iframe {
     font-size: clamp(24px, 7vw, 34px);
   }
 
-  .tarifa-preco span {
+  .tarifa-preco span:not([data-rate-value]):not([data-rate-discount]) {
     display: block;
     font-size: 11px;
     margin-top: 6px;

@@ -6,7 +6,7 @@
    * deste script; os valores abaixo são apenas uma salvaguarda.
    */
   const CONFIG = window.CasaConfig || {
-    version: '20261105-5',
+    version: '20261105-7',
     reservation: {
       minNights: 2,
       maxNights: 60,
