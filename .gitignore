@@ -1,1 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
 
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.idea/
+*.swp

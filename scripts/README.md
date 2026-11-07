@@ -12,7 +12,7 @@ dependências de `requirements.txt` (Pillow e watchdog).
   escreve `js/gallery-data.js` com `src`, `alt`, `width`, `height` e as variantes
   AVIF/WebP de cada imagem.
 - `generate-favicons.py` — gera o conjunto multiformato de favicons
-  (`favicon.ico`, PNG 16/32/48, `apple-touch-icon.png` e ícones Android 192/512).
+  (`favicon.ico`, PNG 16/32, `apple-touch-icon.png` e ícones Android 192/512).
 - `watch-gallery.py` — vigia `images/galeria` e regenera `js/gallery-data.js` quando
   deteta alterações.
 

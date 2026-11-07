@@ -4,7 +4,7 @@ Usage:
     py -3 scripts/generate-favicons.py
 
 Outputs (project root):
-    favicon.ico, favicon-16x16.png, favicon-32x32.png, favicon-48x48.png,
+    favicon.ico, favicon-16x16.png, favicon-32x32.png,
     apple-touch-icon.png, android-chrome-192x192.png, android-chrome-512x512.png
 """
 
@@ -70,7 +70,6 @@ def save_png(size: int, path: Path, *, rounded: bool = True) -> None:
 def main() -> int:
     save_png(16, ROOT_DIR / "favicon-16x16.png")
     save_png(32, ROOT_DIR / "favicon-32x32.png")
-    save_png(48, ROOT_DIR / "favicon-48x48.png")
     save_png(180, ROOT_DIR / "apple-touch-icon.png", rounded=False)
     save_png(192, ROOT_DIR / "android-chrome-192x192.png")
     save_png(512, ROOT_DIR / "android-chrome-512x512.png")
@@ -84,7 +83,7 @@ def main() -> int:
         append_images=icons[:-1],
     )
 
-    print("Favicons gerados: ico + 16/32/48/180/192/512 PNG")
+    print("Favicons gerados: ico + 16/32/180/192/512 PNG")
     return 0
 
 
