@@ -2259,8 +2259,18 @@ textarea.form-control {
     order: 1;
   }
 
+  /* Index: short 16:9 strip, same treatment as the About page photo. */
+  .intro-section#next .image-stack img {
+    aspect-ratio: 16 / 9;
+    box-shadow: var(--shadow-soft);
+    max-height: 220px;
+    object-fit: cover;
+    object-position: center 48%;
+  }
+
   /* Sobre: a single clean image instead of two overlapping photos. */
   .intro-section#next .image-overlap-wrapper {
+    margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
 
@@ -2278,6 +2288,19 @@ textarea.form-control {
     object-position: center 48%;
     position: static;
     width: 100%;
+  }
+
+  /* Sobre: the intro block now hands over directly to the timeline. */
+  .intro-section--about#next {
+    padding-bottom: 16px !important;
+  }
+
+  .intro-section--about#next .row {
+    margin-bottom: 0 !important;
+  }
+
+  .intro-section--about#next + .section {
+    padding-top: 24px !important;
   }
 }
 
