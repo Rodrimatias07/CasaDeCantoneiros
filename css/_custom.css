@@ -334,24 +334,6 @@ textarea.form-control {
     color: #18231b;
 }
 
-/* Gallery picture element (AVIF/WebP with JPEG fallback) */
-.gallery-item picture {
-    display: block;
-    width: 100%;
-}
-
-.gallery-item picture img {
-    display: block;
-}
-
-/* Responsive pictures keep the original layout boxes */
-.image-overlap-wrapper picture,
-.image-stack__item picture,
-.room-img picture {
-    display: block;
-    width: 100%;
-}
-
 .reservation-disclaimer {
     font-size: 13px;
     color: #5b6472;
@@ -617,143 +599,6 @@ textarea.form-control {
     }
 }
 
-.booking-bar > .row {
-    min-height: 100px;
-}
-
-@media (min-width: 768px) {
-    .booking-bar > .row > .col-md-3 {
-        flex: 0 0 23%;
-        max-width: 23%;
-    }
-
-    .booking-bar > .row > .col-md-4 {
-        flex: 0 0 34%;
-        max-width: 34%;
-    }
-
-    .booking-bar > .row > .col-md-2 {
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-}
-
-.booking-bar .form-group {
-    min-height: 80px;
-    padding: 16px 28px !important;
-    border-radius: 18px;
-    position: relative;
-}
-
-.booking-bar .form-group:hover {
-    background: rgba(255, 255, 255, 0.045);
-}
-
-.booking-bar .btn-gold {
-    width: 100%;
-    min-width: 178px;
-    max-width: none;
-    min-height: 60px;
-    padding: 0 26px !important;
-    border-radius: 999px !important;
-    background: linear-gradient(135deg, #f6c45d 0%, #d8a13b 100%) !important;
-    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
-    color: #fff !important;
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.04em !important;
-    line-height: 1.1;
-    white-space: nowrap;
-}
-
-.guest-picker {
-    position: relative;
-    z-index: 30;
-}
-
-.guest-picker-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: auto;
-    min-height: 36px;
-    padding: 0;
-    background: transparent;
-    border: 0;
-    color: #fff;
-    cursor: pointer;
-    font: inherit;
-    text-align: left;
-}
-
-.guest-picker-value {
-    display: inline-block;
-    min-width: 18px;
-    height: auto;
-    background: transparent;
-    border: 0;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.1;
-    box-shadow: none;
-}
-
-.guest-picker.is-empty .guest-picker-value {
-    color: rgba(255, 255, 255, 0.46);
-}
-
-.guest-picker-menu {
-    position: absolute;
-    top: calc(100% + 14px);
-    left: 50%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(48px, 1fr));
-    gap: 8px;
-    min-width: 132px;
-    padding: 12px;
-    background: #fff;
-    border: 1px solid rgba(26, 32, 44, 0.08);
-    border-radius: 18px;
-    box-shadow: 0 22px 50px rgba(9, 12, 18, 0.24);
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 8px);
-    transition: opacity 0.18s ease, transform 0.18s ease;
-}
-
-.guest-picker.open .guest-picker-menu {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, 0);
-}
-
-.guest-picker-menu button {
-    min-width: 48px;
-    height: 44px;
-    padding: 0 12px;
-    background: #f6f1e7;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    color: #1a202c;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 800;
-    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-}
-
-.guest-picker-menu button:hover,
-.guest-picker-menu button.selected {
-    background: #c5a059;
-    border-color: #c5a059;
-    color: #fff;
-}
-
-.booking-bar .btn-gold:hover {
-    background: linear-gradient(135deg, #ffd06d 0%, #d89b2d 100%) !important;
-    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-}
-
 /* Calendar polish */
 .datepicker.dropdown-menu {
     min-width: 300px;
@@ -912,23 +757,6 @@ textarea.form-control {
         margin-bottom: 28px !important;
     }
 
-    .booking-bar > .row {
-        min-height: 0;
-    }
-
-    .booking-bar .form-group {
-        min-height: 0;
-        padding: 14px 16px !important;
-    }
-
-    .booking-bar .btn-gold {
-        max-width: none;
-        min-height: 48px;
-        margin: 12px 0 0;
-        white-space: normal;
-        line-height: 1.2;
-    }
-
     .section,
     .location-section,
     .philosophy-section,
@@ -937,10 +765,7 @@ textarea.form-control {
     }
 
     .heading,
-    .section-title,
-    .testimonial-section .heading,
-    .slider-section .heading,
-    .blog-post-entry .heading {
+    .section-title {
         font-size: clamp(30px, 8vw, 44px) !important;
         line-height: 1.15;
     }
@@ -954,8 +779,7 @@ textarea.form-control {
         display: block;
     }
 
-    .image-stack__item--bottom,
-    .image-stack__item--top {
+    .image-stack__item--bottom {
         padding-top: 0;
     }
 
@@ -971,7 +795,6 @@ textarea.form-control {
         object-fit: cover;
     }
 
-    .testimonial-card,
     .amenity-card,
     .philosophy-card {
         padding: 28px 18px;
@@ -1003,31 +826,6 @@ textarea.form-control {
     .site-hero .heading {
         font-size: clamp(34px, 11vw, 46px) !important;
         margin-bottom: 22px !important;
-    }
-
-    .booking-bar .row.no-gutters > [class*="col-"] {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .booking-bar .col-md-4 .row.no-gutters > .col-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-
-    .booking-bar .col-md-4 .col-6:first-child {
-        border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-bottom: none;
-    }
-
-    .booking-bar .col-md-4 .col-6:last-child {
-        border-bottom: none;
-    }
-
-    .booking-bar .btn-gold {
-        width: 100%;
-        font-size: 13px !important;
-        letter-spacing: 0.06em !important;
     }
 
     .datepicker.dropdown-menu {
@@ -1091,8 +889,7 @@ textarea.form-control {
     }
 
     .btn,
-    .btn-submit,
-    .btn-outline-white-primary {
+    .btn-submit {
         max-width: 100%;
         white-space: normal;
         line-height: 1.25;

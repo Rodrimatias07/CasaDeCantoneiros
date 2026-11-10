@@ -2,1172 +2,218 @@ window.galleryData = [
   {
     "category": "envolvente",
     "src": "images/galeria/envolvente/balanco-panoramico.jpg",
-    "alt": "Balanco Panoramico",
+    "alt": "Balanço de madeira com vista panorâmica sobre o vale",
     "width": 1446,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/envolvente/balanco-panoramico-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/balanco-panoramico-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/balanco-panoramico-1446.avif",
-          "width": 1446
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/envolvente/balanco-panoramico-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/balanco-panoramico-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/balanco-panoramico-1446.webp",
-          "width": 1446
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "envolvente",
     "src": "images/galeria/envolvente/cascata-no-inverno.jpg",
-    "alt": "Cascata No Inverno",
+    "alt": "Escadas de pedra junto a uma cascata no inverno",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/envolvente/cascata-no-inverno-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/cascata-no-inverno-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/cascata-no-inverno-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/envolvente/cascata-no-inverno-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/cascata-no-inverno-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/cascata-no-inverno-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "envolvente",
     "src": "images/galeria/envolvente/paisagem-de-inverno.jpg",
-    "alt": "Paisagem De Inverno",
+    "alt": "Paisagem rural coberta de neve em Vieira do Minho",
     "width": 1274,
-    "height": 959,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/envolvente/paisagem-de-inverno-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/paisagem-de-inverno-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/paisagem-de-inverno-1274.avif",
-          "width": 1274
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/envolvente/paisagem-de-inverno-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/paisagem-de-inverno-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/paisagem-de-inverno-1274.webp",
-          "width": 1274
-        }
-      ]
-    }
+    "height": 959
   },
   {
     "category": "envolvente",
     "src": "images/galeria/envolvente/placa-casa-cantoneiros.jpg",
-    "alt": "Placa Casa Cantoneiros",
+    "alt": "Placa de madeira da Casa de Cantoneiros no caminho da serra",
     "width": 1446,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/envolvente/placa-casa-cantoneiros-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/placa-casa-cantoneiros-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/placa-casa-cantoneiros-1446.avif",
-          "width": 1446
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/envolvente/placa-casa-cantoneiros-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/placa-casa-cantoneiros-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/placa-casa-cantoneiros-1446.webp",
-          "width": 1446
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "envolvente",
     "src": "images/galeria/envolvente/rebanho-na-aldeia.jpg",
-    "alt": "Rebanho Na Aldeia",
+    "alt": "Rebanho de vacas a atravessar a aldeia de Campos Ruivães",
     "width": 1920,
-    "height": 1446,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/envolvente/rebanho-na-aldeia-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/rebanho-na-aldeia-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/rebanho-na-aldeia-1600.avif",
-          "width": 1600
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/envolvente/rebanho-na-aldeia-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/envolvente/rebanho-na-aldeia-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/envolvente/rebanho-na-aldeia-1600.webp",
-          "width": 1600
-        }
-      ]
-    }
+    "height": 1446
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/acesso-casa-cantoneiros.jpg",
-    "alt": "Acesso Casa Cantoneiros",
+    "alt": "Estrada de acesso à Casa de Cantoneiros entre árvores",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/acesso-casa-cantoneiros-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/acesso-casa-cantoneiros-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/acesso-casa-cantoneiros-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/acesso-casa-cantoneiros-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/acesso-casa-cantoneiros-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/acesso-casa-cantoneiros-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/cascata-natural.jpg",
-    "alt": "Cascata Natural",
+    "alt": "Cascata natural com água cristalina na envolvente da casa",
     "width": 1446,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/cascata-natural-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/cascata-natural-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/cascata-natural-1446.avif",
-          "width": 1446
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/cascata-natural-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/cascata-natural-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/cascata-natural-1446.webp",
-          "width": 1446
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/churrasqueira-exterior.jpg",
-    "alt": "Churrasqueira Exterior",
+    "alt": "Churrasqueira exterior coberta com mesa e bancos",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/churrasqueira-exterior-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/churrasqueira-exterior-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/churrasqueira-exterior-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/churrasqueira-exterior-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/churrasqueira-exterior-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/churrasqueira-exterior-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/corredor-entrada.jpg",
-    "alt": "Corredor Entrada",
+    "alt": "Corredor de entrada com casa de banho e porta para o exterior",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/corredor-entrada-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/corredor-entrada-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/corredor-entrada-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/corredor-entrada-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/corredor-entrada-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/corredor-entrada-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/fachada-lateral.jpg",
-    "alt": "Fachada Lateral",
+    "alt": "Fachada lateral branca da casa com telhado de ardósia",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/fachada-lateral-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/fachada-lateral-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/fachada-lateral-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/fachada-lateral-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/fachada-lateral-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/fachada-lateral-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/IMG_3452.jpg",
-    "alt": "Img 3452",
+    "alt": "Terraço exterior com duas cadeiras e vista para a serra",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/IMG_3452-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3452-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3452-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/IMG_3452-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3452-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3452-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/IMG_3468.jpg",
-    "alt": "Img 3468",
+    "alt": "Jardim relvado com espreguiçadeiras junto ao bosque",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/IMG_3468-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3468-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3468-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/IMG_3468-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3468-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3468-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/IMG_3474.jpg",
-    "alt": "Img 3474",
+    "alt": "Varanda da casa com vista para o jardim e a serra",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/IMG_3474-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3474-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3474-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/IMG_3474-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3474-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3474-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/IMG_3503.jpg",
-    "alt": "Img 3503",
+    "alt": "Pátio exterior com mesa e vista para o vale",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/IMG_3503-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3503-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3503-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/IMG_3503-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3503-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_3503-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/IMG_4127.jpg",
-    "alt": "Img 4127",
+    "alt": "Banheira de hidromassagem exterior em pedra",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/IMG_4127-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_4127-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_4127-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/IMG_4127-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/IMG_4127-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/IMG_4127-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/marco-casa-cantoneiros.jpg",
-    "alt": "Marco Casa Cantoneiros",
+    "alt": "Marco de pedra com o número 5335 à entrada da propriedade",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/marco-casa-cantoneiros-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/marco-casa-cantoneiros-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/marco-casa-cantoneiros-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/marco-casa-cantoneiros-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/marco-casa-cantoneiros-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/marco-casa-cantoneiros-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/portao-entrada.jpg",
-    "alt": "Portao Entrada",
+    "alt": "Portão de entrada da Casa de Cantoneiros ladeado por jardim",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/portao-entrada-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/portao-entrada-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/portao-entrada-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/portao-entrada-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/portao-entrada-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/portao-entrada-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/ribeiro-natural.jpg",
-    "alt": "Ribeiro Natural",
+    "alt": "Ribeiro de água cristalina entre rochas e vegetação",
     "width": 1920,
-    "height": 1446,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/ribeiro-natural-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/ribeiro-natural-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/ribeiro-natural-1600.avif",
-          "width": 1600
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/ribeiro-natural-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/ribeiro-natural-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/ribeiro-natural-1600.webp",
-          "width": 1600
-        }
-      ]
-    }
+    "height": 1446
   },
   {
     "category": "exterior",
     "src": "images/galeria/exterior/zona-descanso-jardim.jpg",
-    "alt": "Zona Descanso Jardim",
+    "alt": "Zona de descanso no jardim com espreguiçadeiras à sombra",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/exterior/zona-descanso-jardim-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/zona-descanso-jardim-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/zona-descanso-jardim-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/exterior/zona-descanso-jardim-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/exterior/zona-descanso-jardim-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/exterior/zona-descanso-jardim-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/casa-de-banho.jpg",
-    "alt": "Casa De Banho",
+    "alt": "Casa de banho moderna com base de duche em mármore",
     "width": 1216,
-    "height": 913,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/casa-de-banho-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/casa-de-banho-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/casa-de-banho-1216.avif",
-          "width": 1216
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/casa-de-banho-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/casa-de-banho-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/casa-de-banho-1216.webp",
-          "width": 1216
-        }
-      ]
-    }
+    "height": 913
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/cozinha.jpg",
-    "alt": "Cozinha",
+    "alt": "Cozinha equipada com ilha central e zona de refeições",
     "width": 1216,
-    "height": 913,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/cozinha-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/cozinha-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/cozinha-1216.avif",
-          "width": 1216
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/cozinha-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/cozinha-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/cozinha-1216.webp",
-          "width": 1216
-        }
-      ]
-    }
+    "height": 913
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/detalhe-toalhas.jpg",
-    "alt": "Detalhe Toalhas",
+    "alt": "Toalhas dobradas sobre a cama com mensagem de boas-vindas",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/detalhe-toalhas-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/detalhe-toalhas-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/detalhe-toalhas-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/detalhe-toalhas-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/detalhe-toalhas-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/detalhe-toalhas-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3421.jpeg",
-    "alt": "Img 3421",
+    "alt": "Sala de estar rústica com lareira de pedra",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/IMG_3421-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3421-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3421-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/IMG_3421-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3421-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3421-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3422.jpeg",
-    "alt": "Img 3422",
+    "alt": "Sala de estar com sofá, mesa de jantar e janelas amplas",
     "width": 1920,
-    "height": 1440,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/IMG_3422-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3422-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3422-1600.avif",
-          "width": 1600
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/IMG_3422-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3422-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3422-1600.webp",
-          "width": 1600
-        }
-      ]
-    }
+    "height": 1440
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3425.jpeg",
-    "alt": "Img 3425",
+    "alt": "Sala de estar luminosa com sofá e vista para o exterior",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/IMG_3425-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3425-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3425-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/IMG_3425-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3425-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3425-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3431.jpeg",
-    "alt": "Img 3431",
+    "alt": "Quarto com janela ampla e cortinados",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/IMG_3431-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3431-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3431-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/IMG_3431-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3431-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3431-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3434.jpeg",
-    "alt": "Img 3434",
+    "alt": "Sala de estar rústica com pedra à vista e televisão",
     "width": 1920,
-    "height": 1440,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/IMG_3434-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3434-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3434-1600.avif",
-          "width": 1600
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/IMG_3434-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3434-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3434-1600.webp",
-          "width": 1600
-        }
-      ]
-    }
+    "height": 1440
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/IMG_3437.jpeg",
-    "alt": "Img 3437",
+    "alt": "Quarto com cama de casal, paredes de pedra e luz quente",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/IMG_3437-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3437-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3437-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/IMG_3437-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/IMG_3437-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/IMG_3437-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/janela-quarto.jpg",
-    "alt": "Janela Quarto",
+    "alt": "Janela do quarto com cortinados e vista para o jardim",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/janela-quarto-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/janela-quarto-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/janela-quarto-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/janela-quarto-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/janela-quarto-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/janela-quarto-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/quarto-parede-pedra.jpg",
-    "alt": "Quarto Parede Pedra",
+    "alt": "Quarto com cama de casal e parede de pedra",
     "width": 1440,
-    "height": 1920,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 1920
   },
   {
     "category": "interior",
     "src": "images/galeria/interior/quarto.jpg",
-    "alt": "Quarto",
+    "alt": "Quarto com cama de casal e decoração em tons neutros",
     "width": 1216,
-    "height": 913,
-    "variants": {
-      "avif": [
-        {
-          "src": "images/galeria/interior/quarto-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-480.avif",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/quarto-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-960.avif",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/quarto-1216.avif",
-          "width": 1216
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-1440.avif",
-          "width": 1440
-        }
-      ],
-      "webp": [
-        {
-          "src": "images/galeria/interior/quarto-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-480.webp",
-          "width": 480
-        },
-        {
-          "src": "images/galeria/interior/quarto-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-960.webp",
-          "width": 960
-        },
-        {
-          "src": "images/galeria/interior/quarto-1216.webp",
-          "width": 1216
-        },
-        {
-          "src": "images/galeria/interior/quarto-parede-pedra-1440.webp",
-          "width": 1440
-        }
-      ]
-    }
+    "height": 913
   }
 ];

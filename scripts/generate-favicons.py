@@ -3,9 +3,9 @@
 Usage:
     py -3 scripts/generate-favicons.py
 
-Outputs (project root):
-    favicon.ico, favicon-16x16.png, favicon-32x32.png,
-    apple-touch-icon.png, android-chrome-192x192.png, android-chrome-512x512.png
+Outputs (images/assets-site/icons):
+    favicon.ico, apple-touch-icon.png,
+    android-chrome-192x192.png, android-chrome-512x512.png
 """
 
 from __future__ import annotations
@@ -16,6 +16,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
+ICONS_DIR = ROOT_DIR / "images" / "assets-site" / "icons"
 
 BG = (24, 35, 27, 255)        # #18231b
 GOLD = (183, 139, 74, 255)    # #b78b4a
@@ -68,22 +69,22 @@ def save_png(size: int, path: Path, *, rounded: bool = True) -> None:
 
 
 def main() -> int:
-    save_png(16, ROOT_DIR / "favicon-16x16.png")
-    save_png(32, ROOT_DIR / "favicon-32x32.png")
-    save_png(180, ROOT_DIR / "apple-touch-icon.png", rounded=False)
-    save_png(192, ROOT_DIR / "android-chrome-192x192.png")
-    save_png(512, ROOT_DIR / "android-chrome-512x512.png")
+    ICONS_DIR.mkdir(parents=True, exist_ok=True)
+
+    save_png(180, ICONS_DIR / "apple-touch-icon.png", rounded=False)
+    save_png(192, ICONS_DIR / "android-chrome-192x192.png")
+    save_png(512, ICONS_DIR / "android-chrome-512x512.png")
 
     ico_sizes = [16, 32, 48]
     icons = [draw_mark(size) for size in ico_sizes]
     icons[-1].save(
-        ROOT_DIR / "favicon.ico",
+        ICONS_DIR / "favicon.ico",
         format="ICO",
         sizes=[(size, size) for size in ico_sizes],
         append_images=icons[:-1],
     )
 
-    print("Favicons gerados: ico + 16/32/180/192/512 PNG")
+    print("Favicons gerados: ico + 180/192/512 PNG")
     return 0
 
 

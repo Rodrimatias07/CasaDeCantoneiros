@@ -6,7 +6,7 @@
    * deste script; os valores abaixo são apenas uma salvaguarda.
    */
   const CONFIG = window.CasaConfig || {
-    version: '20261105-13',
+    version: '20261108-3',
     reservation: {
       minNights: 2,
       maxNights: 60,
@@ -22,6 +22,7 @@
 
   const ASSET_VERSION = CONFIG.version || '1';
   const MIN_NIGHTS = Number(CONFIG.reservation && CONFIG.reservation.minNights) || 2;
+  const MAX_NIGHTS = Number(CONFIG.reservation && CONFIG.reservation.maxNights) || 60;
 
   const App = {
     init: function () {
@@ -63,11 +64,9 @@
         .then(() => {
           // Initialize dependent functions immediately after loading
           self.initMenuToggle();
-          self.initDropdownHover();
           self.initStickyHeader();
           self.setActiveMenuItem();
           self.initFooterYear();
-          self.initGoToTop(); // Potentially relies on footer elements
         })
         .catch(error => {
           console.error("Failed to load components", error);
@@ -78,14 +77,12 @@
       this.initStellar();
       this.initSmoothScroll();
       this.initDatePickers();
-      this.initGuestPickers();
       this.initRateDisplay();
       this.initReservationPrefill();
       this.initReservationSelectPickers();
       this.initReservationDateValidation();
       this.initReservationLayout();
       this.initPriceSimulator();
-      this.initBookingFastForm();
       this.initCookieConsent();
     },
 
@@ -128,23 +125,6 @@
           $this.attr('aria-expanded', 'true');
           $('body').addClass('menu-open');
         }
-      });
-    },
-
-    /**
-     * Initialize dropdown hover effects for navigation
-     */
-    initDropdownHover: function () {
-      $('nav .dropdown').hover(function () {
-        const $this = $(this);
-        $this.addClass('show');
-        $this.find('> a').attr('aria-expanded', true);
-        $this.find('.dropdown-menu').addClass('show');
-      }, function () {
-        const $this = $(this);
-        $this.removeClass('show');
-        $this.find('> a').attr('aria-expanded', false);
-        $this.find('.dropdown-menu').removeClass('show');
       });
     },
 
@@ -260,49 +240,6 @@
           'startDate': isCheckout ? minimumCheckout : today,
           'autoclose': true
         });
-      });
-    },
-
-    /**
-     * Premium guest quantity pickers synced with the hidden select fields.
-     */
-    initGuestPickers: function () {
-      $('.guest-picker').each(function () {
-        const $picker = $(this);
-        const $select = $('#' + $picker.data('target'));
-        const $toggle = $picker.find('.guest-picker-toggle');
-        const $value = $picker.find('.guest-picker-value');
-
-        if (!$select.length) return;
-
-        $value.text($select.val());
-        $picker.toggleClass('is-empty', $select.val() === '0');
-        $picker.find('.guest-picker-menu button').removeClass('selected');
-        $picker.find(`.guest-picker-menu button[data-value="${$select.val()}"]`).addClass('selected');
-
-        $toggle.off('click').on('click', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          $('.guest-picker').not($picker).removeClass('open').find('.guest-picker-toggle').attr('aria-expanded', 'false');
-          $picker.toggleClass('open');
-          $toggle.attr('aria-expanded', $picker.hasClass('open') ? 'true' : 'false');
-        });
-
-        $picker.find('.guest-picker-menu button').off('click').on('click', function (e) {
-          e.preventDefault();
-          const selectedValue = $(this).data('value').toString();
-          $select.val(selectedValue).trigger('change');
-          $value.text(selectedValue);
-          $picker.toggleClass('is-empty', selectedValue === '0');
-          $picker.find('.guest-picker-menu button').removeClass('selected');
-          $(this).addClass('selected');
-          $picker.removeClass('open');
-          $toggle.attr('aria-expanded', 'false');
-        });
-      });
-
-      $(document).off('click.guestPickers').on('click.guestPickers', function () {
-        $('.guest-picker').removeClass('open').find('.guest-picker-toggle').attr('aria-expanded', 'false');
       });
     },
 
@@ -477,6 +414,7 @@
       const form = document.querySelector('#reservation-form');
       const checkin = form ? form.querySelector('#checkin_date') : null;
       const checkout = form ? form.querySelector('#checkout_date') : null;
+      const adults = form ? form.querySelector('#adults') : null;
       const dateInputs = [checkin, checkout].filter(Boolean);
 
       if (!checkin && !checkout) return;
@@ -554,6 +492,16 @@
         }
       };
 
+      const setDatepickerEnd = function (input, date) {
+        if (!input || !$.fn.datepicker || !(date instanceof Date)) return;
+
+        try {
+          $(input).datepicker('setEndDate', date);
+        } catch (error) {
+          // The field may not have a datepicker instance in some pages.
+        }
+      };
+
       const clearDatepickerField = function (input) {
         if (!input) return;
 
@@ -565,6 +513,10 @@
             input.value = '';
           }
         }
+
+        // Keep the price simulator and any other listeners in sync after a
+        // programmatic clear (no native input event is fired otherwise).
+        input.dispatchEvent(new Event('input', { bubbles: true }));
       };
 
       const normalizeTypedValue = function (input) {
@@ -631,8 +583,11 @@
         }
 
         const minimumCheckout = addDays(checkinDate || today, MIN_NIGHTS);
+        const maximumCheckout = addDays(checkinDate || today, MAX_NIGHTS);
         checkout.min = formatIsoDate(minimumCheckout);
+        checkout.max = formatIsoDate(maximumCheckout);
         setDatepickerStart(checkout, minimumCheckout);
+        setDatepickerEnd(checkout, maximumCheckout);
 
         clearInvalidCheckout();
       };
@@ -663,6 +618,12 @@
             clearInvalidCheckout();
           });
         }
+      }
+
+      if (adults) {
+        adults.addEventListener('change', function () {
+          adults.setCustomValidity('');
+        });
       }
 
       if (!form) return;
@@ -701,17 +662,42 @@
 
         if (checkinDate && checkoutDate) {
           const minimumCheckout = addDays(checkinDate, MIN_NIGHTS);
+          const nights = Math.round(compareDates(checkoutDate, checkinDate) / 86400000);
 
           if (compareDates(checkoutDate, minimumCheckout) < 0) {
             event.preventDefault();
             checkout.setCustomValidity(
               'A estadia m\u00ednima \u00e9 de ' + MIN_NIGHTS +
               ' noites. Escolha uma data de sa\u00edda pelo menos ' + MIN_NIGHTS +
-              ' dias depois da entrada.'
+              ' noites depois da entrada.'
             );
             checkout.reportValidity();
             return;
           }
+
+          if (nights > MAX_NIGHTS) {
+            event.preventDefault();
+            checkout.setCustomValidity(
+              'A estadia m\u00e1xima \u00e9 de ' + MAX_NIGHTS +
+              ' noites. Escolha uma data de sa\u00edda at\u00e9 ' + MAX_NIGHTS +
+              ' noites depois da entrada.'
+            );
+            checkout.reportValidity();
+            return;
+          }
+        }
+
+        if (adults) {
+          const adultsCount = parseInt(adults.value, 10);
+
+          if (!adultsCount || adultsCount < 1) {
+            event.preventDefault();
+            adults.setCustomValidity('Indique pelo menos 1 adulto.');
+            adults.reportValidity();
+            return;
+          }
+
+          adults.setCustomValidity('');
         }
 
         if (checkin) checkin.setCustomValidity('');
@@ -852,6 +838,17 @@
           return;
         }
 
+        if (nights > MAX_NIGHTS) {
+          status.textContent = 'M\u00e1ximo de ' + MAX_NIGHTS + ' noites';
+          if (detail) {
+            detail.textContent = 'A estadia selecionada tem ' + nights +
+              ' noites. O m\u00e1ximo permitido \u00e9 ' + MAX_NIGHTS + ' noites.';
+          }
+          card.classList.add('is-invalid');
+          card.setAttribute('data-nights', String(nights));
+          return;
+        }
+
         let total = 0;
         let lowNights = 0;
         let highNights = 0;
@@ -907,40 +904,6 @@
       update();
     },
 
-
-    /**
-     * Initialize Fast Booking Form Redirect
-     */
-    initBookingFastForm: function () {
-      const $form = $('#booking_fast_form');
-      if ($form.length) {
-        $form.on('submit', function (e) {
-          e.preventDefault();
-
-          const checkin = $('#checkin_date').val() || '[Sem data de Check-in]';
-          const checkout = $('#checkout_date').val() || '[Sem data de Check-out]';
-          const adults = $('#booking_adults').val() || '0';
-          const children = $('#booking_children').val() || '0';
-
-          // WhatsApp direct flow kept as fallback if the client wants it again later.
-          // const adultsText = adults === '1' ? '1 adulto' : `${adults} adultos`;
-          // const childrenText = children === '1' ? '1 crianÃ§a' : `${children} crianÃ§as`;
-          // const message = `OlÃ¡! Gostaria de fazer uma reserva de ${checkin} a ${checkout} para ${adultsText} e ${childrenText}.`;
-          // const whatsappUrl = `https://wa.me/351965507158?text=${encodeURIComponent(message)}`;
-          // window.open(whatsappUrl, '_blank');
-
-          const params = new URLSearchParams({
-            checkin: checkin,
-            checkout: checkout,
-            adults: adults,
-            children: children
-          });
-
-          window.location.href = `reservas.html?${params.toString()}#next`;
-        });
-      }
-    },
-
     /**
      * Handle sticky header behavior on scroll
      */
@@ -960,28 +923,6 @@
     },
 
     /**
-     * "Back to Top" button functionality
-     */
-    initGoToTop: function () {
-      $('.js-gotop').on('click', function (event) {
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: $('html').offset().top
-        }, 500, 'easeInOutExpo');
-        return false;
-      });
-
-      $(window).scroll(function () {
-        const $win = $(window);
-        if ($win.scrollTop() > 200) {
-          $('.js-top').addClass('active');
-        } else {
-          $('.js-top').removeClass('active');
-        }
-      });
-    },
-
-    /**
      * Set the current year in the footer
      */
     initFooterYear: function () {
@@ -996,30 +937,99 @@
      */
     initCookieConsent: function () {
       const banner = document.getElementById('cookie-banner');
-      if (!banner) return;
-
       const storageKey = 'cookie_consent';
+      const cookieName = 'cookie_consent';
+      const validChoices = ['accepted', 'denied', 'dismissed'];
 
       const readConsent = function () {
+        let data = null;
+
         try {
-          return localStorage.getItem(storageKey);
+          const raw = localStorage.getItem(storageKey);
+          if (raw) {
+            try {
+              data = JSON.parse(raw);
+            } catch (parseError) {
+              data = { choice: raw };
+            }
+          }
         } catch (error) {
+          data = null;
+        }
+
+        if (!data) {
+          const match = document.cookie.match(/(?:^|;\s*)cookie_consent=([^;]+)/);
+          if (match) {
+            try {
+              data = JSON.parse(decodeURIComponent(match[1]));
+            } catch (error) {
+              data = null;
+            }
+          }
+        }
+
+        if (!data || validChoices.indexOf(data.choice) === -1) {
           return null;
         }
+
+        return data.choice;
       };
 
       const saveConsent = function (choice) {
+        const payload = {
+          choice: choice,
+          savedAt: new Date().toISOString()
+        };
+
         try {
-          localStorage.setItem(storageKey, JSON.stringify({
-            choice: choice,
-            savedAt: new Date().toISOString()
-          }));
+          localStorage.setItem(storageKey, JSON.stringify(payload));
         } catch (error) {
-          // Browsers can block localStorage in private modes; the banner still closes for this session.
+          // Private modes can block localStorage; the cookie below is the fallback.
+        }
+
+        try {
+          const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+          document.cookie = cookieName + '=' + encodeURIComponent(JSON.stringify(payload)) +
+            '; Max-Age=31536000; Path=/; SameSite=Lax' + secure;
+        } catch (error) {
+          // If both storages are blocked, the banner still closes for this page view.
+        }
+
+        applyConsent(choice);
+      };
+
+      const loadConsentedContent = function () {
+        document.querySelectorAll('iframe[data-consent-src]').forEach(function (frame) {
+          if (frame.getAttribute('src')) {
+            return;
+          }
+          frame.setAttribute('src', frame.getAttribute('data-consent-src'));
+          frame.removeAttribute('data-consent-src');
+          const placeholder = frame.parentNode.querySelector('[data-consent-placeholder]');
+          if (placeholder) {
+            placeholder.hidden = true;
+          }
+        });
+
+        document.querySelectorAll('script[data-consent-script]').forEach(function (pending) {
+          const script = document.createElement('script');
+          script.src = pending.getAttribute('data-consent-script');
+          script.async = true;
+          pending.remove();
+          document.body.appendChild(script);
+        });
+      };
+
+      const applyConsent = function (choice) {
+        if (choice === 'accepted') {
+          loadConsentedContent();
         }
       };
 
       const showBanner = function () {
+        if (!banner) {
+          return;
+        }
         banner.style.display = 'block';
         window.setTimeout(function () {
           banner.classList.add('is-visible');
@@ -1028,6 +1038,9 @@
       };
 
       const hideBanner = function () {
+        if (!banner) {
+          return;
+        }
         banner.classList.remove('is-visible');
         banner.setAttribute('aria-hidden', 'true');
         window.setTimeout(function () {
@@ -1035,19 +1048,55 @@
         }, 280);
       };
 
-      if (readConsent()) {
-        banner.style.display = 'none';
-        return;
+      const currentChoice = readConsent();
+
+      if (banner) {
+        if (currentChoice) {
+          banner.style.display = 'none';
+        } else {
+          banner.querySelectorAll('[data-cookie-choice]').forEach(function (button) {
+            button.addEventListener('click', function () {
+              saveConsent(button.getAttribute('data-cookie-choice'));
+              hideBanner();
+            });
+          });
+
+          window.setTimeout(showBanner, 500);
+        }
       }
 
-      banner.querySelectorAll('[data-cookie-choice]').forEach(function (button) {
+      // Allow the user to load a gated third-party element (e.g. the map) on demand.
+      document.querySelectorAll('[data-cookie-accept]').forEach(function (button) {
         button.addEventListener('click', function () {
-          saveConsent(button.getAttribute('data-cookie-choice'));
+          saveConsent('accepted');
           hideBanner();
         });
       });
 
-      window.setTimeout(showBanner, 500);
+      // Allow withdrawal of consent from the privacy policy.
+      document.querySelectorAll('[data-cookie-reset]').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+
+          try {
+            localStorage.removeItem(storageKey);
+          } catch (error) {
+            // Ignore blocked storage.
+          }
+
+          document.cookie = cookieName + '=; Max-Age=0; Path=/';
+          window.location.reload();
+        });
+      });
+
+      applyConsent(currentChoice);
+
+      window.CasaConsent = {
+        get: readConsent,
+        hasConsent: function () {
+          return readConsent() === 'accepted';
+        }
+      };
     }
   };
 
