@@ -118,7 +118,7 @@ total. O valor final é enviado no campo oculto `estimativa_preco`.
   validação JavaScript com mensagens em português.
 - **Sincronização do simulador:** campos limpos programaticamente disparam eventos para
   manter o preço e o campo oculto sempre coerentes.
-- **Assets versionados:** CSS e JS usam `?v=20261108-3` para invalidar cache em produção.
+- **Assets versionados:** CSS e JS usam `?v=20261112-1` para invalidar cache em produção.
 - **Progressively enhanced:** a página continua legível mesmo se algum script falhar.
 
 ---

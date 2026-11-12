@@ -6,7 +6,7 @@
  * tarifas leem estes valores, garantindo que o site nunca fica dessincronizado.
  */
 window.CasaConfig = {
-  version: '20261108-3',
+  version: '20261112-1',
 
   reservation: {
     minNights: 2,
